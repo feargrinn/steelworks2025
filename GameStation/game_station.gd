@@ -38,7 +38,6 @@ func _process(_delta: float) -> void:
 				assigned_person = null
 			if player_person: 
 				player_person.set_target_position(go_away_position.global_position) # Former player goes away
-				player_person = null
 			
 			# new assigned goes towards station
 			waiting_for_player = true
@@ -57,6 +56,7 @@ func _process(_delta: float) -> void:
 	
 	if player_person and player_person.global_position.distance_to(required_position.global_position) > error_station_distance:
 		player_person = null
+		progress_bar.hide()
 
 
 func end_round() -> void:
@@ -72,10 +72,11 @@ func end_round() -> void:
 func start_round() -> void:
 	# TODO: if paid
 	timer.start(station_stats.get_game_length())
-	print("Person ", player_person.id ," started playing station with id: ", station_id)
+	progress_bar.show()
+	print("Person ", player_person.id ," started round on station with id: ", station_id)
 
 func _update_progress_bar() -> void:
-	var time_passed: float = station_stats.max_game_length - timer.time_left
+	var time_passed: float = station_stats.game_length - timer.time_left
 	progress_bar.value = time_passed
 
 func _on_mouse_entered() -> void:
