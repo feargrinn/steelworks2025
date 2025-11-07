@@ -1,20 +1,23 @@
 extends Area2D
 
 @export var station_id: int = 0 # Maybe unnecessary
-@export var retrieval_time: float = 2.0 # How much time between gambles for tickets
+@export var station_stats: StationStats
 
 @onready var highlight_sprite = $Highlight
 @onready var required_position: Node2D = $PlayerPosition
+@onready var timer: Timer = $Timer
 
-var reward_retrieval_timer: float = 0.0 # How much time left for the next gamble
+signal won_prize(tickets: int)
+
 var assigned_person: Node2D = null
 var player_person: Node2D = null
 var highlighted: bool = false
 
 func _ready() -> void:
 	highlight_sprite.hide()
+	timer.timeout.connect(end_round)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Clicked on the station
 	if Input.is_action_just_pressed("left_click") and highlighted:
 		print("Clicked machine with id: ", station_id)
@@ -29,15 +32,20 @@ func _process(delta: float) -> void:
 		if assigned_person.global_position.distance_to(required_position.global_position):
 			# TODO: make the former assigned_person go away
 			player_person = assigned_person
-			reward_retrieval_timer = retrieval_time # Reset the time for getting a new reward
-			
-	if player_person != null:
-		if reward_retrieval_timer <= 0.0:
-			reward_retrieval_timer = retrieval_time
-			# TODO: gamble for tickets
-			
-		reward_retrieval_timer -= delta
+			start_round()
 
+
+func end_round() -> void:
+	if !player_person:
+		return
+	if station_stats.is_round_won():
+		var prize := station_stats.get_prize()
+		won_prize.emit(prize)
+	start_round()
+
+func start_round() -> void:
+	# TODO: if paid
+	timer.start(station_stats.get_game_length())
 
 func _on_mouse_entered() -> void:
 	highlighted = true

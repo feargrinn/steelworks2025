@@ -25,5 +25,8 @@ texture = ExtResource("2_4rapk")
 [node name="PlayerPosition" type="Marker2D" parent="."]
 position = Vector2(0, 40)
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
