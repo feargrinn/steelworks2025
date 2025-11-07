@@ -20,8 +20,8 @@ func _process(delta: float) -> void:
 		print("Clicked machine with id: ", station_id)
 		
 		# If there is a person selected we make him go towards the station (he is assigned)
-		if game_manager.currently_selected_person != null:
-			assigned_person = game_manager.currently_selected_person
+		if GameManager.currently_selected_person != null:
+			assigned_person = GameManager.currently_selected_person
 			# TODO: make assigned person go towards required_position
 	
 	# Checking if the person has finished walking to the station
