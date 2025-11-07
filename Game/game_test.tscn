@@ -1,7 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cihsoql26ea6q"]
+[gd_scene load_steps=7 format=3 uid="uid://cihsoql26ea6q"]
 
 [ext_resource type="PackedScene" uid="uid://bju83lqmpv8l0" path="res://GameStation/game_station.tscn" id="1_27slg"]
 [ext_resource type="PackedScene" uid="uid://clq3fnptaamig" path="res://person/person.tscn" id="2_stteb"]
+[ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_x8blb"]
+
+[sub_resource type="Resource" id="Resource_5xm6i"]
+script = ExtResource("2_x8blb")
+min_game_length = 0.5
+max_game_length = 3.0
+base_win_chance = 0.75
+min_tickets = 2
+max_tickets = 5
+metadata/_custom_type_script = "uid://cdh1oja6p1an4"
+
+[sub_resource type="Resource" id="Resource_3n0ku"]
+script = ExtResource("2_x8blb")
+min_game_length = 1.0
+max_game_length = 7.0
+base_win_chance = 0.5
+min_tickets = 10
+max_tickets = 15
+metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_stteb"]
 vertices = PackedVector2Array(891.8281, 630, -37.632813, 630, -14.34375, -6.3828125, 759.84375, -37.65625)
@@ -13,10 +32,12 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-24, -16, -48, 640, 904
 [node name="GameStation" parent="." instance=ExtResource("1_27slg")]
 position = Vector2(240, 88)
 station_id = 1
+station_stats = SubResource("Resource_5xm6i")
 
 [node name="GameStation2" parent="." instance=ExtResource("1_27slg")]
 position = Vector2(432, 88)
 station_id = 2
+station_stats = SubResource("Resource_3n0ku")
 
 [node name="Person" parent="." instance=ExtResource("2_stteb")]
 position = Vector2(128, 328)

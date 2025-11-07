@@ -30,5 +30,8 @@ position = Vector2(0, 56)
 [node name="GoAwayPosition" type="Marker2D" parent="."]
 position = Vector2(64, 56)
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

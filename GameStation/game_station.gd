@@ -2,24 +2,28 @@ extends Area2D
 
 class_name GameStation
 
-@export var station_id: int = 0 # Maybe unnecessary
-@export var retrieval_time: float = 2.0 # How much time between gambles for tickets
 const error_station_distance: float = 20.0
+
+@export var station_id: int = 0 # Maybe unnecessary
+@export var station_stats: StationStats
 
 @onready var highlight_sprite = $Highlight
 @onready var required_position: Node2D = $PlayerPosition
 @onready var go_away_position: Node2D = $GoAwayPosition
+@onready var timer: Timer = $Timer
 
-var reward_retrieval_timer: float = 0.0 # How much time left for the next gamble
-var assigned_person: Person = null
-var player_person: Person = null
+signal won_prize(tickets: int)
+
+var assigned_person: Node2D = null
+var player_person: Node2D = null
 var highlighted: bool = false
 var waiting_for_player: bool = false
 
 func _ready() -> void:
 	highlight_sprite.hide()
+	timer.timeout.connect(end_round)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Clicked on the station
 	if Input.is_action_just_pressed("left_click") and highlighted:
 		print("Clicked station with id: ", station_id)
@@ -46,20 +50,26 @@ func _process(delta: float) -> void:
 			waiting_for_player = false
 			player_person = assigned_person
 			assigned_person = null
-			reward_retrieval_timer = retrieval_time # Reset the time for getting a new reward
-			print("Person ", player_person.id ," started playing station with id: ", station_id)
-			
+			start_round()
+	
 	if player_person and player_person.global_position.distance_to(required_position.global_position) > error_station_distance:
 		player_person = null
-	
-	# gambling for tickets
-	if player_person != null and !waiting_for_player:
-		if reward_retrieval_timer <= 0.0:
-			reward_retrieval_timer = retrieval_time
-			GameManager.no_collected_tickets += 1
-			print("Tickets: ", GameManager.no_collected_tickets)
-		reward_retrieval_timer -= delta
 
+
+func end_round() -> void:
+	if !player_person:
+		return
+	if station_stats.is_round_won():
+		var prize := station_stats.get_prize()
+		won_prize.emit(prize)
+		GameManager.no_collected_tickets += prize
+		print("Tickets: ", GameManager.no_collected_tickets)
+	start_round()
+
+func start_round() -> void:
+	# TODO: if paid
+	timer.start(station_stats.get_game_length())
+	print("Person ", player_person.id ," started playing station with id: ", station_id)
 
 func _on_mouse_entered() -> void:
 	highlighted = true
