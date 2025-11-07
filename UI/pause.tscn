@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0qj04rgilc7j"]
+
+[ext_resource type="Script" uid="uid://cckwefygs2ab8" path="res://UI/pause.gd" id="1_6wphx"]
+
+[node name="Pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6wphx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "high score:"
+
+[node name="BackToGame" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "BAK TO GAM"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="BackToMainMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "BAK TO MAIN MENU"
+
+[connection signal="pressed" from="VBoxContainer/BackToGame" to="." method="_on_back_to_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackToMainMenu" to="." method="_on_back_to_main_menu_pressed"]

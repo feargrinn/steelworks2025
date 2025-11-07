@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bjcvya11vaes"]
 
-[ext_resource type="Script" uid="uid://6ns8xhcssx8v" path="res://menu_buttons.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://6ns8xhcssx8v" path="res://UI/menu_buttons.gd" id="1_p8ccj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_06t4h")
+script = ExtResource("1_p8ccj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

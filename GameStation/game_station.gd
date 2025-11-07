@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		print("Clicked station with id: ", station_id)
 		
 		# If there is a person selected we make him go towards the station (he is assigned)
-		if game_manager.currently_selected_person != null:
+		if GameManager.currently_selected_person != null:
 			if assigned_person:
 				assigned_person.set_target_position(assigned_person.global_position) # former assigned stops
 				assigned_person = null
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 			
 			# new assigned goes towards station
 			waiting_for_player = true
-			assigned_person = game_manager.currently_selected_person
+			assigned_person = GameManager.currently_selected_person
 			assigned_person.set_target_position(required_position.global_position)
 			print("Person ", assigned_person.id ," goes towards station with id: ", station_id)
 	

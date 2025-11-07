@@ -2,7 +2,7 @@ extends Node
 
 var no_collected_tickets: int = 0
 var currently_selected_person: Person = null
-
+var pause_screen = preload("res://UI/pause.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,4 +11,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed('pause'):
+		add_child(pause_screen.instantiate())
+		get_tree().paused = true
