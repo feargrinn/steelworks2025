@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bju83lqmpv8l0"]
+
+[ext_resource type="Script" uid="uid://or6jxiwn13ui" path="res://GameStation/game_station.gd" id="1_1rg1j"]
+[ext_resource type="Texture2D" uid="uid://cwvjj4goryojp" path="res://GameStation/stacjatest.png" id="2_4rapk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kk21"]
+size = Vector2(64, 48)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vw4o8"]
+
+[node name="GameStation" type="Area2D"]
+script = ExtResource("1_1rg1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0kk21")
+
+[node name="Highlight" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(64, 48)
+texture = SubResource("CanvasTexture_vw4o8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4rapk")
+
+[node name="PlayerPosition" type="Marker2D" parent="."]
+position = Vector2(0, 40)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
