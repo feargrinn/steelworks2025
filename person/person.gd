@@ -12,7 +12,7 @@ var highlighted: bool = false
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("left_click") and highlighted:
 		print("Clicked person with id: ", id)
-		game_manager.currently_selected_person = self
+		GameManager.currently_selected_person = self
 	
 	if not navigation_agent_2d.is_navigation_finished():
 		var dir := to_local(navigation_agent_2d.get_next_path_position()).normalized()

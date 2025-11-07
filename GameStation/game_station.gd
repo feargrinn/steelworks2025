@@ -56,8 +56,8 @@ func _process(delta: float) -> void:
 	if player_person != null and !waiting_for_player:
 		if reward_retrieval_timer <= 0.0:
 			reward_retrieval_timer = retrieval_time
-			game_manager.no_collected_tickets += 1
-			print("Tickets: ", game_manager.no_collected_tickets)
+			GameManager.no_collected_tickets += 1
+			print("Tickets: ", GameManager.no_collected_tickets)
 		reward_retrieval_timer -= delta
 
 
