@@ -11,6 +11,7 @@ const error_station_distance: float = 20.0
 @onready var required_position: Node2D = $PlayerPosition
 @onready var go_away_position: Node2D = $GoAwayPosition
 @onready var timer: Timer = $Timer
+@onready var progress_bar: ProgressBar = $ProgressBar
 
 signal won_prize(tickets: int)
 
@@ -22,8 +23,10 @@ var waiting_for_player: bool = false
 func _ready() -> void:
 	highlight_sprite.hide()
 	timer.timeout.connect(end_round)
+	progress_bar.max_value = station_stats.max_game_length
 
 func _process(_delta: float) -> void:
+	_update_progress_bar()
 	# Clicked on the station
 	if Input.is_action_just_pressed("left_click") and highlighted:
 		print("Clicked station with id: ", station_id)
@@ -70,6 +73,10 @@ func start_round() -> void:
 	# TODO: if paid
 	timer.start(station_stats.get_game_length())
 	print("Person ", player_person.id ," started playing station with id: ", station_id)
+
+func _update_progress_bar() -> void:
+	var time_passed: float = station_stats.max_game_length - timer.time_left
+	progress_bar.value = time_passed
 
 func _on_mouse_entered() -> void:
 	highlighted = true

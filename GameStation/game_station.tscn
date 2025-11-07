@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bju83lqmpv8l0"]
+[gd_scene load_steps=7 format=3 uid="uid://bju83lqmpv8l0"]
 
 [ext_resource type="Script" uid="uid://or6jxiwn13ui" path="res://GameStation/game_station.gd" id="1_1rg1j"]
 [ext_resource type="Texture2D" uid="uid://cwvjj4goryojp" path="res://GameStation/stacjatest.png" id="2_4rapk"]
+[ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_vp250"]
+
+[sub_resource type="Resource" id="Resource_wdeg8"]
+script = ExtResource("2_vp250")
+metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kk21"]
 size = Vector2(64, 48)
@@ -12,6 +17,7 @@ size = Vector2(64, 48)
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("1_1rg1j")
+station_stats = SubResource("Resource_wdeg8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0kk21")
@@ -32,6 +38,13 @@ position = Vector2(64, 56)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -37.0
+offset_top = -58.0
+offset_right = 35.0
+offset_bottom = -31.0
+show_percentage = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
