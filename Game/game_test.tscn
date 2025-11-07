@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cihsoql26ea6q"]
+
+[ext_resource type="PackedScene" uid="uid://bju83lqmpv8l0" path="res://GameStation/game_station.tscn" id="1_27slg"]
+[ext_resource type="PackedScene" uid="uid://clq3fnptaamig" path="res://person/person.tscn" id="2_stteb"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_stteb"]
+vertices = PackedVector2Array(891.8281, 630, -37.632813, 630, -14.34375, -6.3828125, 759.84375, -37.65625)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-24, -16, -48, 640, 904, 640, 768, -48)])
+
+[node name="GameTest" type="Node2D"]
+
+[node name="GameStation" parent="." instance=ExtResource("1_27slg")]
+position = Vector2(240, 88)
+station_id = 1
+
+[node name="GameStation2" parent="." instance=ExtResource("1_27slg")]
+position = Vector2(432, 88)
+station_id = 2
+
+[node name="Person" parent="." instance=ExtResource("2_stteb")]
+position = Vector2(128, 328)
+id = 1
+
+[node name="Person2" parent="." instance=ExtResource("2_stteb")]
+position = Vector2(344, 352)
+id = 2
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_stteb")

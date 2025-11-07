@@ -9,6 +9,8 @@ size = Vector2(64, 48)
 [sub_resource type="CanvasTexture" id="CanvasTexture_vw4o8"]
 
 [node name="GameStation" type="Area2D"]
+collision_layer = 128
+collision_mask = 128
 script = ExtResource("1_1rg1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -23,7 +25,10 @@ texture = SubResource("CanvasTexture_vw4o8")
 texture = ExtResource("2_4rapk")
 
 [node name="PlayerPosition" type="Marker2D" parent="."]
-position = Vector2(0, 40)
+position = Vector2(0, 56)
+
+[node name="GoAwayPosition" type="Marker2D" parent="."]
+position = Vector2(64, 56)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
