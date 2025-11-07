@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjcvya11vaes"]
+
+[ext_resource type="Script" uid="uid://6ns8xhcssx8v" path="res://menu_buttons.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Los Dziados"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "high score:"
+
+[node name="Play" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="Credits" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "CREDITS"
+
+[node name="Quit" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
