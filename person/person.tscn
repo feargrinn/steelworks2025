@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://clq3fnptaamig"]
+[gd_scene load_steps=5 format=3 uid="uid://clq3fnptaamig"]
 
 [ext_resource type="Script" uid="uid://dgema0f02cqo2" path="res://person/person.gd" id="1_ngoep"]
 [ext_resource type="Texture2D" uid="uid://ducg1hy1losfk" path="res://icon.svg" id="2_xv8dq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc72a"]
 radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngoep"]
+size = Vector2(32, 32)
 
 [node name="Person" type="CharacterBody2D"]
 z_index = 1
@@ -21,3 +24,13 @@ texture = ExtResource("2_xv8dq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lc72a")
+
+[node name="MouseClickDetection" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClickDetection"]
+shape = SubResource("RectangleShape2D_ngoep")
+
+[connection signal="mouse_entered" from="MouseClickDetection" to="." method="_on_mouse_click_detection_mouse_entered"]
+[connection signal="mouse_exited" from="MouseClickDetection" to="." method="_on_mouse_click_detection_mouse_exited"]
