@@ -32,5 +32,5 @@ func spawn_ghost() -> void:
 				viewport_rect.end.y + SPAWN_FAR)
 	var pos := Vector2(x, y)
 	var ghost := GHOST.instantiate()
-	add_child(ghost)
 	ghost.position = pos
+	add_child(ghost)
