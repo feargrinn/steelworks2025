@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8ymtc5uqe1xt"]
+
+[ext_resource type="Script" uid="uid://cho3xe14u7wag" path="res://GameStation/station_stats_viewer.gd" id="1_ut2i6"]
+[ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_tyg0u"]
+
+[sub_resource type="Resource" id="Resource_y3pko"]
+script = ExtResource("2_tyg0u")
+metadata/_custom_type_script = "uid://cdh1oja6p1an4"
+
+[node name="StationStatsViewer" type="PanelContainer"]
+z_index = 2
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ut2i6")
+stats = SubResource("Resource_y3pko")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Win chance"
+horizontal_alignment = 1
+
+[node name="WinChance" type="Label" parent="MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ticket range"
+horizontal_alignment = 1
+
+[node name="TicketRange" type="Label" parent="MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game length"
+horizontal_alignment = 1
+
+[node name="GameLength" type="Label" parent="MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cost"
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tickets left"
+horizontal_alignment = 1
+
+[node name="AvailableTickets" type="Label" parent="MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Profitability"
+horizontal_alignment = 1
+
+[node name="CalculatedProfitability" type="Label" parent="MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

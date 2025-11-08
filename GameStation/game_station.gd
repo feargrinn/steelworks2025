@@ -53,6 +53,8 @@ func _process(_delta: float) -> void:
 			assigned_person.set_target_position(required_position.global_position)
 			print("Person ", assigned_person.id ," goes towards station with id: ", station_id)
 			GameManager.currently_selected_person = null
+		else:
+			add_child(StationStatsViewer.instantiate(station_stats))
 	
 	# Checking if the person has finished walking to the station
 	if assigned_person != null:
@@ -79,7 +81,8 @@ func _process(_delta: float) -> void:
 func _update_sprite() -> void:
 	animated_sprite_2d.animation = "ded"
 	progress_bar.hide()
-
+	
+	
 func show_prize(prize: int) -> void:
 	won_prize_label.text = "+ " + str(prize)
 	won_prize_label.position = label_position
