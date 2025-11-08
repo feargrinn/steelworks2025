@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://di0tyr2qohlsm"]
+
+[ext_resource type="PackedScene" uid="uid://clq3fnptaamig" path="res://person/person.tscn" id="1_eljlg"]
+[ext_resource type="Script" uid="uid://ccgonsjiqsq6x" path="res://person/person_machine_stats.gd" id="2_ggtui"]
+[ext_resource type="Script" uid="uid://b34awb8mabkru" path="res://person/person_stats.gd" id="3_fhsi0"]
+[ext_resource type="Texture2D" uid="uid://cjsgec1h75gip" path="res://Assets/Graphics/characters_front_clean.png" id="4_8qhpw"]
+
+[sub_resource type="Resource" id="Resource_7tgfk"]
+script = ExtResource("2_ggtui")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_rwvyi"]
+script = ExtResource("2_ggtui")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_7fu4h"]
+resource_local_to_scene = true
+script = ExtResource("3_fhsi0")
+game_station_stats = Dictionary[int, ExtResource("2_ggtui")]({
+1: SubResource("Resource_7tgfk"),
+2: SubResource("Resource_rwvyi")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eljlg"]
+size = Vector2(104, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0j6q"]
+atlas = ExtResource("4_8qhpw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oah8s"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0j6q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Person" instance=ExtResource("1_eljlg")]
+person_stats = SubResource("Resource_7fu4h")
+
+[node name="CollisionShape2D" parent="MouseClickDetection" index="0"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_eljlg")
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_oah8s")
+
+[node name="IrritabilityDisplay" parent="." index="4"]
+offset_top = -136.0
+offset_bottom = -123.0
+
+[node name="MoniLabel" parent="." index="5"]
+offset_top = -164.0
+offset_bottom = -141.0

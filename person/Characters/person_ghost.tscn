@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://baqnn3sq3b02c"]
+
+[ext_resource type="PackedScene" uid="uid://clq3fnptaamig" path="res://person/person.tscn" id="1_6uhxi"]
+[ext_resource type="Script" uid="uid://ccgonsjiqsq6x" path="res://person/person_machine_stats.gd" id="2_3am5j"]
+[ext_resource type="Script" uid="uid://b34awb8mabkru" path="res://person/person_stats.gd" id="3_umftx"]
+[ext_resource type="Texture2D" uid="uid://cjsgec1h75gip" path="res://Assets/Graphics/characters_front_clean.png" id="4_75fcm"]
+
+[sub_resource type="Resource" id="Resource_7tgfk"]
+script = ExtResource("2_3am5j")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_rwvyi"]
+script = ExtResource("2_3am5j")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_u6ghy"]
+resource_local_to_scene = true
+script = ExtResource("3_umftx")
+game_station_stats = Dictionary[int, ExtResource("2_3am5j")]({
+1: SubResource("Resource_7tgfk"),
+2: SubResource("Resource_rwvyi")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyuc8"]
+size = Vector2(56, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upelm"]
+atlas = ExtResource("4_75fcm")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ntil"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upelm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Person" instance=ExtResource("1_6uhxi")]
+person_stats = SubResource("Resource_u6ghy")
+
+[node name="CollisionShape2D" parent="MouseClickDetection" index="0"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_xyuc8")
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_4ntil")
+
+[node name="IrritabilityDisplay" parent="." index="4"]
+offset_top = -112.0
+offset_bottom = -99.0
+
+[node name="MoniLabel" parent="." index="5"]
+offset_top = -140.0
+offset_bottom = -117.0

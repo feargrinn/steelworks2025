@@ -1,0 +1,207 @@
+[gd_scene load_steps=35 format=4 uid="uid://oq52jok2vof0"]
+
+[ext_resource type="PackedScene" uid="uid://bju83lqmpv8l0" path="res://GameStation/game_station.tscn" id="1_yvxyn"]
+[ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_7u3s2"]
+[ext_resource type="PackedScene" uid="uid://rftixi2e17ui" path="res://person/Characters/person_devil.tscn" id="3_ei0uk"]
+[ext_resource type="Script" uid="uid://ccgonsjiqsq6x" path="res://person/person_machine_stats.gd" id="4_35u0o"]
+[ext_resource type="Script" uid="uid://b34awb8mabkru" path="res://person/person_stats.gd" id="5_ei0uk"]
+[ext_resource type="Texture2D" uid="uid://dp0sg0jqwyope" path="res://person/grid.png" id="6_42mck"]
+[ext_resource type="PackedScene" uid="uid://baqnn3sq3b02c" path="res://person/Characters/person_ghost.tscn" id="6_rrjkx"]
+[ext_resource type="PackedScene" uid="uid://brp7qk3itnw6o" path="res://ghost/ghost_spawner.tscn" id="7_rrjkx"]
+[ext_resource type="PackedScene" uid="uid://byohe4r0kp34u" path="res://person/Characters/person_witch.tscn" id="7_vsr8i"]
+[ext_resource type="PackedScene" uid="uid://di0tyr2qohlsm" path="res://person/Characters/person_pumpkin.tscn" id="8_r5ukm"]
+[ext_resource type="Script" uid="uid://c1tyxopfhs18s" path="res://ghost/wave.gd" id="8_vsr8i"]
+[ext_resource type="PackedScene" uid="uid://b3w2blow7jusn" path="res://person/Characters/person_skeleton.tscn" id="9_32ex6"]
+
+[sub_resource type="Resource" id="Resource_5xm6i"]
+script = ExtResource("2_7u3s2")
+max_game_length = 3.0
+base_win_chance = 0.75
+min_tickets = 2
+metadata/_custom_type_script = "uid://cdh1oja6p1an4"
+
+[sub_resource type="Resource" id="Resource_3n0ku"]
+script = ExtResource("2_7u3s2")
+min_game_length = 1.0
+max_game_length = 7.0
+min_tickets = 10
+max_tickets = 15
+metadata/_custom_type_script = "uid://cdh1oja6p1an4"
+
+[sub_resource type="Resource" id="Resource_7tgfk"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_rwvyi"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_w70x5"]
+resource_local_to_scene = true
+script = ExtResource("5_ei0uk")
+game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
+1: SubResource("Resource_7tgfk"),
+2: SubResource("Resource_rwvyi")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
+
+[sub_resource type="Resource" id="Resource_7don1"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_2s5l2"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_xe4vv"]
+resource_local_to_scene = true
+script = ExtResource("5_ei0uk")
+game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
+1: SubResource("Resource_7don1"),
+2: SubResource("Resource_2s5l2")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
+
+[sub_resource type="Resource" id="Resource_qe5ej"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_ba57m"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_hte8e"]
+resource_local_to_scene = true
+script = ExtResource("5_ei0uk")
+game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
+1: SubResource("Resource_qe5ej"),
+2: SubResource("Resource_ba57m")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
+
+[sub_resource type="Resource" id="Resource_tqalx"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_16lpa"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_jt7cu"]
+resource_local_to_scene = true
+script = ExtResource("5_ei0uk")
+game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
+1: SubResource("Resource_tqalx"),
+2: SubResource("Resource_16lpa")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
+
+[sub_resource type="Resource" id="Resource_03f5k"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_hhh4b"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_wpegc"]
+resource_local_to_scene = true
+script = ExtResource("5_ei0uk")
+game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
+1: SubResource("Resource_03f5k"),
+2: SubResource("Resource_hhh4b")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_stteb"]
+vertices = PackedVector2Array(1910, 1078, 10, 1078, 10, 10, 1910, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, -16, 1104, 1936, 1104, 1936, -16)])
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_us0j2"]
+texture = ExtResource("6_42mck")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4pjdj"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_us0j2")
+
+[sub_resource type="Resource" id="Resource_hcmxo"]
+script = ExtResource("8_vsr8i")
+time_before = 5.0
+mode = 4
+metadata/_custom_type_script = "uid://c1tyxopfhs18s"
+
+[sub_resource type="Resource" id="Resource_xmxo4"]
+script = ExtResource("8_vsr8i")
+time_before = 5.0
+mode = 5
+metadata/_custom_type_script = "uid://c1tyxopfhs18s"
+
+[node name="GameTest" type="Node2D"]
+
+[node name="Stations" type="Node" parent="."]
+
+[node name="GameStation" parent="Stations" instance=ExtResource("1_yvxyn")]
+position = Vector2(240, 484)
+station_id = 1
+station_stats = SubResource("Resource_5xm6i")
+
+[node name="GameStation3" parent="Stations" instance=ExtResource("1_yvxyn")]
+position = Vector2(1104, 204)
+station_id = 1
+station_stats = SubResource("Resource_5xm6i")
+
+[node name="GameStation4" parent="Stations" instance=ExtResource("1_yvxyn")]
+position = Vector2(396, 760)
+station_id = 1
+station_stats = SubResource("Resource_5xm6i")
+
+[node name="GameStation5" parent="Stations" instance=ExtResource("1_yvxyn")]
+position = Vector2(1240, 828)
+station_id = 1
+station_stats = SubResource("Resource_5xm6i")
+
+[node name="GameStation6" parent="Stations" instance=ExtResource("1_yvxyn")]
+position = Vector2(1392, 560)
+station_id = 1
+station_stats = SubResource("Resource_5xm6i")
+
+[node name="GameStation2" parent="Stations" instance=ExtResource("1_yvxyn")]
+position = Vector2(492, 264)
+station_id = 2
+station_stats = SubResource("Resource_3n0ku")
+
+[node name="People" type="Node" parent="."]
+
+[node name="Person" parent="People" instance=ExtResource("3_ei0uk")]
+position = Vector2(648, 796)
+person_stats = SubResource("Resource_w70x5")
+
+[node name="Person2" parent="People" instance=ExtResource("6_rrjkx")]
+position = Vector2(600, 412)
+person_stats = SubResource("Resource_xe4vv")
+
+[node name="Person3" parent="People" instance=ExtResource("7_vsr8i")]
+position = Vector2(824, 448)
+person_stats = SubResource("Resource_hte8e")
+
+[node name="Person4" parent="People" instance=ExtResource("8_r5ukm")]
+position = Vector2(1140, 520)
+person_stats = SubResource("Resource_jt7cu")
+
+[node name="Person5" parent="People" instance=ExtResource("9_32ex6")]
+position = Vector2(988, 784)
+person_stats = SubResource("Resource_wpegc")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_stteb")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
+tile_map_data = PackedByteArray("AAD//ygAAAAAAAAAAAD//ykAAAAAAAAAAAD//xUAAAAAAAAAAAD//xYAAAAAAAAAAAD//xcAAAAAAAAAAAD//xgAAAAAAAAAAAD//xkAAAAAAAAAAAD//xoAAAAAAAAAAAD//xsAAAAAAAAAAAD//xwAAAAAAAAAAAD//x0AAAAAAAAAAAD//x4AAAAAAAAAAAD//x8AAAAAAAAAAAD//yAAAAAAAAAAAAD//yEAAAAAAAAAAAD//yIAAAAAAAAAAAD//yMAAAAAAAAAAAD//yQAAAAAAAAAAAD//yUAAAAAAAAAAAD//yYAAAAAAAAAAAD//ycAAAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAD//wkAAAAAAAAAAAD//woAAAAAAAAAAAD//wsAAAAAAAAAAAD//wwAAAAAAAAAAAD//w0AAAAAAAAAAAD//w4AAAAAAAAAAAD//w8AAAAAAAAAAAD//xAAAAAAAAAAAAD//xEAAAAAAAAAAAD//xIAAAAAAAAAAAD//xMAAAAAAAAAAAD//xQAAAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAAAAAAAAAAcAP//AAAAAAAAAAAdAP//AAAAAAAAAAAeAP//AAAAAAAAAAAfAP//AAAAAAAAAAAgAP//AAAAAAAAAAAhAP//AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAlAP//AAAAAAAAAAAmAP//AAAAAAAAAAAnAP//AAAAAAAAAAAoAP//AAAAAAAAAAApAP//AAAAAAAAAAAqAP//AAAAAAAAAAArAP//AAAAAAAAAAAsAP//AAAAAAAAAAAtAP//AAAAAAAAAAAuAP//AAAAAAAAAAAvAP//AAAAAAAAAAAwAP//AAAAAAAAAAAxAP//AAAAAAAAAAAyAP//AAAAAAAAAAAzAP//AAAAAAAAAAA0AP//AAAAAAAAAAA1AP//AAAAAAAAAAA2AP//AAAAAAAAAAA3AP//AAAAAAAAAAA4AP//AAAAAAAAAAA5AP//AAAAAAAAAAA6AP//AAAAAAAAAAA7AP//AAAAAAAAAAA8AP//AAAAAAAAAAA9AP//AAAAAAAAAAA+AP//AAAAAAAAAAA/AP//AAAAAAAAAABAAP//AAAAAAAAAABBAP//AAAAAAAAAABCAP//AAAAAAAAAABDAP//AAAAAAAAAABEAP//AAAAAAAAAABFAP//AAAAAAAAAABGAP//AAAAAAAAAABHAP//AAAAAAAAAAD//yoAAAAAAAAAAAD//ysAAAAAAAAAAAD//ywAAAAAAAAAAAD//y0AAAAAAAAAAAD//y4AAAAAAAAAAAD//y8AAAAAAAAAAAD//zAAAAAAAAAAAAD//zEAAAAAAAAAAAD//zIAAAAAAAAAAAD//zMAAAAAAAAAAAD//zQAAAAAAAAAAAD//zUAAAAAAAAAAAD//zYAAAAAAAAAAAD//zcAAAAAAAAAAAD//zgAAAAAAAAAAAD//zkAAAAAAAAAAAD//zoAAAAAAAAAAAD//zsAAAAAAAAAAAD//zwAAAAAAAAAAAD//z0AAAAAAAAAAAD//z4AAAAAAAAAAAD//z8AAAAAAAAAAAD//0AAAAAAAAAAAAD//0EAAAAAAAAAAAD//0IAAAAAAAAAAAD//0MAAAAAAAAAAAD//0QAAAAAAAAAAAAAAEQAAAAAAAAAAAABAEQAAAAAAAAAAAACAEQAAAAAAAAAAAADAEQAAAAAAAAAAAAEAEQAAAAAAAAAAAAFAEQAAAAAAAAAAAAGAEQAAAAAAAAAAAAHAEQAAAAAAAAAAAAIAEQAAAAAAAAAAAAJAEQAAAAAAAAAAAAKAEQAAAAAAAAAAAALAEQAAAAAAAAAAAAMAEQAAAAAAAAAAAANAEQAAAAAAAAAAAAOAEQAAAAAAAAAAAAPAEQAAAAAAAAAAAAQAEQAAAAAAAAAAAARAEQAAAAAAAAAAAASAEQAAAAAAAAAAAATAEQAAAAAAAAAAAAUAEQAAAAAAAAAAAAVAEQAAAAAAAAAAAAWAEQAAAAAAAAAAAAXAEQAAAAAAAAAAAAYAEQAAAAAAAAAAAAZAEQAAAAAAAAAAAAaAEQAAAAAAAAAAAAbAEQAAAAAAAAAAAAcAEQAAAAAAAAAAAAdAEQAAAAAAAAAAAAeAEQAAAAAAAAAAAAfAEQAAAAAAAAAAAAgAEQAAAAAAAAAAAAhAEQAAAAAAAAAAAAiAEQAAAAAAAAAAAAjAEQAAAAAAAAAAAAkAEQAAAAAAAAAAAAlAEQAAAAAAAAAAAAmAEQAAAAAAAAAAAAnAEQAAAAAAAAAAAAoAEQAAAAAAAAAAAApAEQAAAAAAAAAAAAqAEQAAAAAAAAAAAArAEQAAAAAAAAAAAAsAEQAAAAAAAAAAAAtAEQAAAAAAAAAAAAuAEQAAAAAAAAAAAAvAEQAAAAAAAAAAAAwAEQAAAAAAAAAAAAxAEQAAAAAAAAAAAAyAEQAAAAAAAAAAAAzAEQAAAAAAAAAAAA0AEQAAAAAAAAAAAA1AEQAAAAAAAAAAAA2AEQAAAAAAAAAAAA3AEQAAAAAAAAAAAA4AEQAAAAAAAAAAAA5AEQAAAAAAAAAAAA6AEQAAAAAAAAAAAA7AEQAAAAAAAAAAAA8AEQAAAAAAAAAAAA9AEQAAAAAAAAAAAA+AEQAAAAAAAAAAAA/AEQAAAAAAAAAAABAAEQAAAAAAAAAAABBAEQAAAAAAAAAAABCAEQAAAAAAAAAAABDAEQAAAAAAAAAAABEAEQAAAAAAAAAAABFAEQAAAAAAAAAAABGAEQAAAAAAAAAAABHAEQAAAAAAAAAAABIAEQAAAAAAAAAAABJAEQAAAAAAAAAAABKAEQAAAAAAAAAAABLAEQAAAAAAAAAAABMAEQAAAAAAAAAAABNAEQAAAAAAAAAAABOAEQAAAAAAAAAAABPAEQAAAAAAAAAAABQAEQAAAAAAAAAAABRAEQAAAAAAAAAAABSAEQAAAAAAAAAAABTAEQAAAAAAAAAAABUAEQAAAAAAAAAAABVAEQAAAAAAAAAAABWAEQAAAAAAAAAAABXAEQAAAAAAAAAAABYAEQAAAAAAAAAAABZAEQAAAAAAAAAAABaAEQAAAAAAAAAAABbAEQAAAAAAAAAAABcAEQAAAAAAAAAAABdAEQAAAAAAAAAAABeAEQAAAAAAAAAAABfAEQAAAAAAAAAAABgAEQAAAAAAAAAAABhAEQAAAAAAAAAAABiAEQAAAAAAAAAAABjAEQAAAAAAAAAAABkAEQAAAAAAAAAAABlAEQAAAAAAAAAAABmAEQAAAAAAAAAAABnAEQAAAAAAAAAAABoAEQAAAAAAAAAAABpAEQAAAAAAAAAAABqAEQAAAAAAAAAAABrAEQAAAAAAAAAAABsAEQAAAAAAAAAAABtAEQAAAAAAAAAAABuAEQAAAAAAAAAAABvAEQAAAAAAAAAAABwAEQAAAAAAAAAAABxAEQAAAAAAAAAAAByAEQAAAAAAAAAAABzAEQAAAAAAAAAAAB0AEQAAAAAAAAAAAB1AEQAAAAAAAAAAAB2AEQAAAAAAAAAAAB3AEQAAAAAAAAAAAB4AEQAAAAAAAAAAAB4AD4AAAAAAAAAAAB4AD8AAAAAAAAAAAB4AEAAAAAAAAAAAAB4AEEAAAAAAAAAAAB4AEIAAAAAAAAAAAB4AEMAAAAAAAAAAAB4ABQAAAAAAAAAAAB4ABUAAAAAAAAAAAB4ABYAAAAAAAAAAAB4ABcAAAAAAAAAAAB4ABgAAAAAAAAAAAB4ABkAAAAAAAAAAAB4ABoAAAAAAAAAAAB4ABsAAAAAAAAAAAB4ABwAAAAAAAAAAAB4AB0AAAAAAAAAAAB4AB4AAAAAAAAAAAB4AB8AAAAAAAAAAAB4ACAAAAAAAAAAAAB4ACEAAAAAAAAAAAB4ACIAAAAAAAAAAAB4ACMAAAAAAAAAAAB4ACQAAAAAAAAAAAB4ACUAAAAAAAAAAAB4ACYAAAAAAAAAAAB4ACcAAAAAAAAAAAB4ACgAAAAAAAAAAAB4ACkAAAAAAAAAAAB4ACoAAAAAAAAAAAB4ACsAAAAAAAAAAAB4ACwAAAAAAAAAAAB4AC0AAAAAAAAAAAB4AC4AAAAAAAAAAAB4AC8AAAAAAAAAAAB4ADAAAAAAAAAAAAB4ADEAAAAAAAAAAAB4ADIAAAAAAAAAAAB4ADMAAAAAAAAAAAB4ADQAAAAAAAAAAAB4ADUAAAAAAAAAAAB4ADYAAAAAAAAAAAB4ADcAAAAAAAAAAAB4ADgAAAAAAAAAAAB4ADkAAAAAAAAAAAB4ADoAAAAAAAAAAAB4ADsAAAAAAAAAAAB4ADwAAAAAAAAAAAB4AD0AAAAAAAAAAAB4AP//AAAAAAAAAAB4AAAAAAAAAAAAAAB4AAEAAAAAAAAAAAB4AAIAAAAAAAAAAAB4AAMAAAAAAAAAAAB4AAQAAAAAAAAAAAB4AAUAAAAAAAAAAAB4AAYAAAAAAAAAAAB4AAcAAAAAAAAAAAB4AAgAAAAAAAAAAAB4AAkAAAAAAAAAAAB4AAoAAAAAAAAAAAB4AAsAAAAAAAAAAAB4AAwAAAAAAAAAAAB4AA0AAAAAAAAAAAB4AA4AAAAAAAAAAAB4AA8AAAAAAAAAAAB4ABAAAAAAAAAAAAB4ABEAAAAAAAAAAAB4ABIAAAAAAAAAAAB4ABMAAAAAAAAAAABIAP//AAAAAAAAAABJAP//AAAAAAAAAABKAP//AAAAAAAAAABLAP//AAAAAAAAAABMAP//AAAAAAAAAABNAP//AAAAAAAAAABOAP//AAAAAAAAAABPAP//AAAAAAAAAABQAP//AAAAAAAAAABRAP//AAAAAAAAAABSAP//AAAAAAAAAABTAP//AAAAAAAAAABUAP//AAAAAAAAAABVAP//AAAAAAAAAABWAP//AAAAAAAAAABXAP//AAAAAAAAAABYAP//AAAAAAAAAABZAP//AAAAAAAAAABaAP//AAAAAAAAAABbAP//AAAAAAAAAABcAP//AAAAAAAAAABdAP//AAAAAAAAAABeAP//AAAAAAAAAABfAP//AAAAAAAAAABgAP//AAAAAAAAAABhAP//AAAAAAAAAABiAP//AAAAAAAAAABjAP//AAAAAAAAAABkAP//AAAAAAAAAABlAP//AAAAAAAAAABmAP//AAAAAAAAAABnAP//AAAAAAAAAABoAP//AAAAAAAAAABpAP//AAAAAAAAAABqAP//AAAAAAAAAABrAP//AAAAAAAAAABsAP//AAAAAAAAAABtAP//AAAAAAAAAABuAP//AAAAAAAAAABvAP//AAAAAAAAAABwAP//AAAAAAAAAABxAP//AAAAAAAAAAByAP//AAAAAAAAAABzAP//AAAAAAAAAAB0AP//AAAAAAAAAAB1AP//AAAAAAAAAAB2AP//AAAAAAAAAAB3AP//AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_4pjdj")
+
+[node name="GhostSpawner" parent="." instance=ExtResource("7_rrjkx")]
+waves = Array[ExtResource("8_vsr8i")]([SubResource("Resource_hcmxo"), SubResource("Resource_xmxo4")])
