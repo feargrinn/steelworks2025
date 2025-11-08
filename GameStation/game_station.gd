@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 			assigned_person = GameManager.currently_selected_person
 			assigned_person.set_target_position(required_position.global_position)
 			print("Person ", assigned_person.id ," goes towards station with id: ", station_id)
-			GameManager.currently_selected_person = null
+			GameManager.set_selected_person(null)
 	
 	# Checking if the person has finished walking to the station
 	if assigned_person != null:
