@@ -17,18 +17,24 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-game_manager="*res://Global/game_manager.gd"
 GameManager="*res://Global/game_manager.gd"
+game_manager="*res://Global/game_manager.gd"
 AudioManager="*res://UI/audio_manager.tscn"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/resizable=false
 
 [global_group]
 
 person=""
 ghost=""
+
+[gui]
+
+theme/custom_font="uid://bkwcvbox4hnoo"
 
 [input]
 
@@ -45,5 +51,6 @@ pause={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
