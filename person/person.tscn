@@ -1,13 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://clq3fnptaamig"]
+[gd_scene load_steps=8 format=3 uid="uid://clq3fnptaamig"]
 
 [ext_resource type="Script" uid="uid://dgema0f02cqo2" path="res://person/person.gd" id="1_ngoep"]
-[ext_resource type="Texture2D" uid="uid://ducg1hy1losfk" path="res://icon.svg" id="2_xv8dq"]
+[ext_resource type="Texture2D" uid="uid://ce4epahvcay1k" path="res://person/person.png" id="3_nhqh4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc72a"]
-radius = 16.0
+radius = 23.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngoep"]
-size = Vector2(32, 32)
+size = Vector2(48, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngoep"]
+atlas = ExtResource("3_nhqh4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv8dq"]
+atlas = ExtResource("3_nhqh4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpckf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngoep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv8dq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="Person" type="CharacterBody2D"]
 z_index = 1
@@ -18,10 +40,6 @@ script = ExtResource("1_ngoep")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_xv8dq")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lc72a")
 
@@ -31,6 +49,12 @@ collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClickDetection"]
 shape = SubResource("RectangleShape2D_ngoep")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_qpckf")
+autoplay = "default"
+frame_progress = 0.29789525
 
 [connection signal="mouse_entered" from="MouseClickDetection" to="." method="_on_mouse_click_detection_mouse_entered"]
 [connection signal="mouse_exited" from="MouseClickDetection" to="." method="_on_mouse_click_detection_mouse_exited"]

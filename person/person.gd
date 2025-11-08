@@ -6,6 +6,10 @@ class_name Person
 @export var speed: float = 100
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+var outline_material: Material = preload("res://materials/person.tres")
+
 
 var highlighted: bool = false
 
@@ -26,7 +30,8 @@ func set_target_position(target_position: Vector2) -> void:
 
 func _on_mouse_click_detection_mouse_entered() -> void:
 	highlighted = true
-	# TODO: make a highlight
+	animated_sprite_2d.material = outline_material
 
 func _on_mouse_click_detection_mouse_exited() -> void:
 	highlighted = false
+	animated_sprite_2d.material = null

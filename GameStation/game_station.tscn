@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bju83lqmpv8l0"]
+[gd_scene load_steps=8 format=3 uid="uid://bju83lqmpv8l0"]
 
 [ext_resource type="Script" uid="uid://or6jxiwn13ui" path="res://GameStation/game_station.gd" id="1_1rg1j"]
 [ext_resource type="Texture2D" uid="uid://cwvjj4goryojp" path="res://GameStation/stacjatest.png" id="2_4rapk"]
-[ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_vp250"]
+[ext_resource type="Script" path="res://GameStation/station_stats.gd" id="2_vp250"]
 
 [sub_resource type="Resource" id="Resource_wdeg8"]
 script = ExtResource("2_vp250")
@@ -11,7 +11,20 @@ metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kk21"]
 size = Vector2(64, 48)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_vw4o8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rapk"]
+atlas = ExtResource("2_4rapk")
+region = Rect2(0, 0, 64, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vp250"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rapk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="GameStation" type="Area2D"]
 collision_layer = 128
@@ -21,14 +34,6 @@ station_stats = SubResource("Resource_wdeg8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0kk21")
-
-[node name="Highlight" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(64, 48)
-texture = SubResource("CanvasTexture_vw4o8")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_4rapk")
 
 [node name="PlayerPosition" type="Marker2D" parent="."]
 position = Vector2(0, 56)
@@ -46,6 +51,9 @@ offset_top = -58.0
 offset_right = 35.0
 offset_bottom = -31.0
 show_percentage = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vp250")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
