@@ -31,7 +31,7 @@ var outline_material: Material = preload("res://materials/person.tres")
 func _ready() -> void:
 	timer.timeout.connect(end_round)
 	progress_bar.max_value = station_stats.max_game_length
-	station_stats.tickets_used_up.connect(_update_sprite)
+	station_stats.tickets_used_up.connect(_kill_station)
 
 func _process(_delta: float) -> void:
 	_update_progress_bar()
@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 		print("Clicked station with id: ", station_id)
 		
 		# If there is a person selected we make him go towards the station (he is assigned)
-		if GameManager.currently_selected_person != null:
+		if GameManager.currently_selected_person != null and GameManager.currently_selected_person != player_person:
 			if assigned_person:
 				assigned_person.set_target_position(assigned_person.global_position) # former assigned stops
 				assigned_person = null
@@ -52,10 +52,11 @@ func _process(_delta: float) -> void:
 			assigned_person = GameManager.currently_selected_person
 			assigned_person.set_target_position(required_position.global_position)
 			print("Person ", assigned_person.id ," goes towards station with id: ", station_id)
-			GameManager.currently_selected_person = null
+			GameManager.set_selected_person(null)
 		else:
 			add_child(StationStatsViewer.instantiate(station_stats))
-	
+
+
 	# Checking if the person has finished walking to the station
 	if assigned_person != null:
 		if waiting_for_player and assigned_person.global_position.distance_to(required_position.global_position) <= error_station_distance:
@@ -71,6 +72,8 @@ func _process(_delta: float) -> void:
 				game_won.connect(player_person.person_stats._on_win)
 	
 	if player_person and player_person.global_position.distance_to(required_position.global_position) > error_station_distance:
+		if animated_sprite_2d.animation != "ded":
+			animated_sprite_2d.animation = "default"
 		game_lost.disconnect(player_person.person_stats._on_loss)
 		game_won.disconnect(player_person.person_stats._on_win)
 		player_person.is_playing = false
@@ -78,7 +81,8 @@ func _process(_delta: float) -> void:
 		player_person = null
 		progress_bar.hide()
 
-func _update_sprite() -> void:
+func _kill_station() -> void: # Station becomes inactive
+	if player_person: player_person.set_target_position(go_away_position.global_position)
 	animated_sprite_2d.animation = "ded"
 	progress_bar.hide()
 	
@@ -117,7 +121,7 @@ func end_round() -> void:
 	start_round()
 
 func start_round() -> void:
-	if station_stats.aviable_tickets <= 0:
+	if station_stats.available_tickets <= 0:
 		return
 	if player_person.person_stats.coins < station_stats.price:
 		player_person.indicate_not_enough_coins()
@@ -129,6 +133,7 @@ func start_round() -> void:
 	timer.start(station_stats.get_game_length(person_chances))
 	_update_progress_bar()
 	progress_bar.show()
+	animated_sprite_2d.animation = "playing"
 
 func _update_progress_bar() -> void:
 	var time_passed: float = station_stats.game_length - timer.time_left

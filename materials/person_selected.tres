@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b5n8ocv2a8eah"]
+
+[ext_resource type="Shader" uid="uid://dhfdqexwnhlyi" path="res://materials/person.gdshader" id="1_1cvvx"]
+
+[resource]
+shader = ExtResource("1_1cvvx")
+shader_parameter/color = Color(3.85046e-07, 0.9561861, 0.96375996, 1)
+shader_parameter/width = 3.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)

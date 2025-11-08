@@ -13,3 +13,10 @@ func _ready() -> void:
 		file.store_string('0')
 		file.close()
 	pass # Replace with function body.
+
+func set_selected_person(person: Person):
+	if currently_selected_person:
+		currently_selected_person.deselect()
+	currently_selected_person = person
+	if person:
+		person.select()
