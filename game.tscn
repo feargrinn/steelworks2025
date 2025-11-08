@@ -6,4 +6,9 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_e2o6t")
 
-[node name="GuiTime" parent="." instance=ExtResource("1_80nbo")]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="GuiTime" parent="GUI" instance=ExtResource("1_80nbo")]
+unique_name_in_owner = true

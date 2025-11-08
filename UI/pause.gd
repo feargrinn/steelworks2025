@@ -4,6 +4,12 @@ func _on_back_to_game_pressed() -> void:
 	get_tree().paused = false
 	queue_free()
 
+#func _unhandled_input(event):
+	#print('jshsdgffcdsggfhstrefwfadsgnbhvftdreswdfv fzxb')
+	#if event.is_action_pressed('pause'):
+		#get_tree().paused = false
+		#queue_free()
+			
 
 func _on_settings_pressed() -> void:
 	var settings = preload('res://UI/settings.tscn').instantiate()

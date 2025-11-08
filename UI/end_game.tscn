@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh25ri3kk4lrl"]
+
+[ext_resource type="Script" uid="uid://c5gqvpnjjmwaw" path="res://end_game.gd" id="1_u11pd"]
+
+[node name="EndGame" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_u11pd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 150
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.38170326, 0.38170323, 0.38170323, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+
+[node name="PlayAgain" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
+z_index = 100
+layout_mode = 2
+text = "START AGAIN"
+
+[node name="GoBack" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "GO BACK TO MAIN MENU"
+
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/GoBack" to="." method="_on_go_back_pressed"]
