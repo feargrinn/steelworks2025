@@ -1,12 +1,19 @@
 extends Control
 
 var win_condition : bool
-var time_left : String
+var formatted_time_left : String
+var time_left : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#win
 	if win_condition:
-		%Label.text = "You've won with the time " + time_left
+		if time_left > int(GameManager.high_score):
+			print(time_left)
+			var save_access_file = FileAccess.open("user://save", FileAccess.WRITE) 
+			save_access_file.store_string(str(time_left))
+			save_access_file.flush()
+
+		%Label.text = "You've won with the time " + formatted_time_left
 		pass
 	else:
 		%Label.text = "You loooooooooooooost"
