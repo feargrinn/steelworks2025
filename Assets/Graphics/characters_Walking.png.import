@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ktcmxcyewkaq"
-path="res://.godot/imported/fesh_off.png-ae7c06674af1d98b54548c4ab76dd796.ctex"
+uid="uid://df475ngjqo18t"
+path="res://.godot/imported/characters_Walking.png-b1ead97a0ac5b819f0775011d53dffe5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Machines/fesh_off.png"
-dest_files=["res://.godot/imported/fesh_off.png-ae7c06674af1d98b54548c4ab76dd796.ctex"]
+source_file="res://Assets/Graphics/characters_Walking.png"
+dest_files=["res://.godot/imported/characters_Walking.png-b1ead97a0ac5b819f0775011d53dffe5.ctex"]
 
 [params]
 

@@ -18,7 +18,12 @@ func _process(_delta: float) -> void:
 		$GUI.add_child(pause_screen.instantiate())
 		get_tree().paused = true
 	gui.show_time(timer.time_left)
-		
+	var is_anyone_walking = get_tree().get_nodes_in_group("person") \
+		.filter(func(person: Person): return person.velocity.length() > 0).size() > 0
+	if is_anyone_walking:
+		AudioManager.set_sfx_playing("footstep", true)
+	else:
+		AudioManager.set_sfx_playing("footstep", false)
 
 	if GameManager.no_collected_tickets >= 1000:
 		win()
@@ -28,6 +33,8 @@ func _process(_delta: float) -> void:
 
 
 func win():
+	AudioManager.play_sfx("victory_jingiel")
+	AudioManager.set_sfx_playing("footstep", false)
 	var inst_end = game_end_node.instantiate()
 	var time_node = $%GuiTime.time_formatted
 	inst_end.win_condition = 1
@@ -38,6 +45,8 @@ func win():
 	#print('you won!!! time left: ' + time_node)
 		
 func lose():
+	AudioManager.play_sfx("defeat")
+	AudioManager.set_sfx_playing("footstep", false)
 	var inst_end = game_end_node.instantiate()
 	inst_end.win_condition = 0
 	$GUI.add_child(inst_end)

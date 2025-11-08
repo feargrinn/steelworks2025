@@ -56,6 +56,7 @@ func get_random_position(mode: SpawnMode) -> Vector2:
 	return [get_random_top_pos, get_random_down_pos, get_random_left_pos, get_random_right_pos].pick_random().call()
 
 func create_wave(enemy_count: int, time_between: float, mode: SpawnMode):
+	AudioManager.play_sfx("ghost_wave")
 	var tween = create_tween()
 	for i in range(enemy_count):
 		tween.tween_callback(spawn_ghost.bind(get_random_position(mode)))
