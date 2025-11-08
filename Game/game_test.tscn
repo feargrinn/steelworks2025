@@ -35,6 +35,7 @@ game_station_stats = Dictionary[int, ExtResource("4_3n0ku")]({
 1: SubResource("Resource_e18af"),
 2: SubResource("Resource_dac6k")
 })
+coins = 0
 metadata/_custom_type_script = "uid://b34awb8mabkru"
 
 [sub_resource type="Resource" id="Resource_7tgfk"]

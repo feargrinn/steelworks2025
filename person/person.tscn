@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://ce4epahvcay1k" path="res://person/person.png" id="3_nhqh4"]
 [ext_resource type="Script" uid="uid://cbiuhrh5s8shy" path="res://person/irritability_display.gd" id="3_xv8dq"]
 
-[sub_resource type="Resource" id="Resource_rwvyi"]
+[sub_resource type="Resource" id="Resource_7tgfk"]
 script = ExtResource("2_rwvyi")
 metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 
-[sub_resource type="Resource" id="Resource_7tgfk"]
+[sub_resource type="Resource" id="Resource_rwvyi"]
 script = ExtResource("2_rwvyi")
 metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 
@@ -89,6 +89,22 @@ offset_right = 7.0
 offset_bottom = -31.0
 script = ExtResource("3_xv8dq")
 gradient = SubResource("Gradient_xv8dq")
+
+[node name="MoniLabel" type="Label" parent="."]
+modulate = Color(1, 0.03137255, 0, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -42.0
+offset_right = 21.5
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "no $$"
 
 [connection signal="mouse_entered" from="MouseClickDetection" to="." method="_on_mouse_click_detection_mouse_entered"]
 [connection signal="mouse_exited" from="MouseClickDetection" to="." method="_on_mouse_click_detection_mouse_exited"]

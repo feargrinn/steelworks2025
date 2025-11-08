@@ -31,6 +31,7 @@ var outline_material: Material = preload("res://materials/person.tres")
 func _ready() -> void:
 	timer.timeout.connect(end_round)
 	progress_bar.max_value = station_stats.max_game_length
+	station_stats.tickets_used_up.connect(_update_sprite)
 
 func _process(_delta: float) -> void:
 	_update_progress_bar()
@@ -75,6 +76,10 @@ func _process(_delta: float) -> void:
 		player_person = null
 		progress_bar.hide()
 
+func _update_sprite() -> void:
+	animated_sprite_2d.animation = "ded"
+	progress_bar.hide()
+
 func show_prize(prize: int) -> void:
 	won_prize_label.text = "+ " + str(prize)
 	won_prize_label.position = label_position
@@ -92,8 +97,7 @@ func show_prize(prize: int) -> void:
 			won_prize_label, "modulate:a", 
 			0, 1.
 			)
-	
-	
+
 
 func end_round() -> void:
 	if !player_person:
@@ -110,7 +114,12 @@ func end_round() -> void:
 	start_round()
 
 func start_round() -> void:
-	# TODO: if paid
+	if station_stats.aviable_tickets <= 0:
+		return
+	if player_person.person_stats.coins < station_stats.price:
+		player_person.indicate_not_enough_coins()
+		progress_bar.hide()
+		return
 	var person_chances := (
 		player_person.person_stats.game_station_stats[station_id].win_chance
 	)

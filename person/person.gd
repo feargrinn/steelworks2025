@@ -9,6 +9,7 @@ class_name Person
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var irritability_display: IrritabilityDisplay = $IrritabilityDisplay
+@onready var moni_label: Label = $MoniLabel
 
 var outline_material: Material = preload("res://materials/person.tres")
 var highlighted: bool = false
@@ -45,6 +46,12 @@ func _physics_process(delta: float) -> void:
 func set_target_position(target_position: Vector2) -> void:
 	navigation_agent_2d.target_position = target_position
 
+
+func indicate_not_enough_coins() -> void:
+	var tween = moni_label.create_tween()
+	moni_label.modulate.a = 1
+	tween.tween_property(moni_label, "modulate:a", 0, 1)
+	tween.tween_callback(tween.kill)
 
 func _on_mouse_click_detection_mouse_entered() -> void:
 	highlighted = true

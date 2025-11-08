@@ -6,11 +6,11 @@ extends Resource
 @export var speed: float = 100
 ## When exceeded, this guy won't want to play
 @export_range(0, 200) var patience: int = 100
-## Per second, doesn't do anything
+## Per second
 @export_range(1, 30) var calming_down_speed: int = 10 # Should it go down faster when walking :D?
 ## Doesn't do anything:)
 @export var ghosts_before_heart_attack: int = 3
-
+@export var coins: int = 30
 
 var irritation := 0.0 : set = set_irritation
 var ghosts_survived := 0 :set = set_ghosts_survived
