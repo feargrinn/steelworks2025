@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bju83lqmpv8l0" path="res://GameStation/game_station.tscn" id="1_5ecm4"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_ncl56"]
 [ext_resource type="PackedScene" uid="uid://clq3fnptaamig" path="res://person/person.tscn" id="3_us0j2"]
-[ext_resource type="Script" path="res://person/person_machine_stats.gd" id="4_mjmud"]
+[ext_resource type="Script" uid="uid://ccgonsjiqsq6x" path="res://person/person_machine_stats.gd" id="4_mjmud"]
 [ext_resource type="Texture2D" uid="uid://dp0sg0jqwyope" path="res://person/grid.png" id="4_us0j2"]
 [ext_resource type="PackedScene" uid="uid://brp7qk3itnw6o" path="res://ghost/ghost_spawner.tscn" id="5_us0j2"]
-[ext_resource type="Script" path="res://person/person_stats.gd" id="5_wv3y0"]
+[ext_resource type="Script" uid="uid://b34awb8mabkru" path="res://person/person_stats.gd" id="5_wv3y0"]
 [ext_resource type="Script" uid="uid://c1tyxopfhs18s" path="res://ghost/wave.gd" id="6_4pjdj"]
 
 [sub_resource type="Resource" id="Resource_5xm6i"]
@@ -68,14 +68,13 @@ sources/0 = SubResource("TileSetAtlasSource_us0j2")
 [sub_resource type="Resource" id="Resource_hcmxo"]
 script = ExtResource("6_4pjdj")
 time_before = 5.0
+mode = 4
 metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 
 [sub_resource type="Resource" id="Resource_xmxo4"]
 script = ExtResource("6_4pjdj")
 time_before = 5.0
-enemy_count = 100
-time_interval = 0.01
-mode = 0
+mode = 5
 metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 
 [node name="GameTest" type="Node2D"]

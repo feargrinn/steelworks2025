@@ -7,7 +7,7 @@ extends Area2D
 
 
 func _physics_process(delta: float) -> void:
-	var goal = node_to_follow.position if node_to_follow else get_viewport_rect().get_center()
+	var goal = node_to_follow.global_position if node_to_follow else get_viewport_rect().get_center()
 	var direction := (goal - global_position).normalized()
 	if (goal - global_position).length_squared() < pow(SPEED * delta, 2):
 		global_position = goal
