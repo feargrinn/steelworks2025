@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cmlgjr7hlv3sc" path="res://GameStation/stacjabroken.png" id="3_vp250"]
 
 [sub_resource type="Resource" id="Resource_wdeg8"]
+resource_local_to_scene = true
 script = ExtResource("2_vp250")
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
