@@ -2,12 +2,12 @@ class_name StationStats
 extends Resource
 
 ## In seconds
-@export var min_game_length: float
+@export_range(0.3, 1.0, 0.1) var min_game_length: float = 0.5
 ## In seconds
-@export var max_game_length: float
-@export var base_win_chance: float
-@export var min_tickets: int
-@export var max_tickets: int
+@export_range(0.5, 30.0, 0.1) var max_game_length: float = 10.0
+@export_range(0.0, 1.0, 0.01) var base_win_chance: float = 0.5
+@export var min_tickets: int = 1
+@export var max_tickets: int = 5
 
 var game_length: float
 

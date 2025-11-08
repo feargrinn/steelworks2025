@@ -1,26 +1,51 @@
-[gd_scene load_steps=7 format=3 uid="uid://cihsoql26ea6q"]
+[gd_scene load_steps=13 format=3 uid="uid://cihsoql26ea6q"]
 
 [ext_resource type="PackedScene" uid="uid://bju83lqmpv8l0" path="res://GameStation/game_station.tscn" id="1_27slg"]
 [ext_resource type="PackedScene" uid="uid://clq3fnptaamig" path="res://person/person.tscn" id="2_stteb"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_x8blb"]
+[ext_resource type="Script" uid="uid://ccgonsjiqsq6x" path="res://person/person_machine_stats.gd" id="4_3n0ku"]
+[ext_resource type="Script" uid="uid://b34awb8mabkru" path="res://person/person_stats.gd" id="5_0i5h3"]
 
 [sub_resource type="Resource" id="Resource_5xm6i"]
 script = ExtResource("2_x8blb")
-min_game_length = 0.5
 max_game_length = 3.0
 base_win_chance = 0.75
 min_tickets = 2
-max_tickets = 5
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
 [sub_resource type="Resource" id="Resource_3n0ku"]
 script = ExtResource("2_x8blb")
 min_game_length = 1.0
 max_game_length = 7.0
-base_win_chance = 0.5
 min_tickets = 10
 max_tickets = 15
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
+
+[sub_resource type="Resource" id="Resource_rwvyi"]
+script = ExtResource("4_3n0ku")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_7tgfk"]
+script = ExtResource("4_3n0ku")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_e18af"]
+resource_local_to_scene = true
+script = ExtResource("5_0i5h3")
+game_station_stats = Dictionary[int, ExtResource("4_3n0ku")]({
+1: SubResource("Resource_7tgfk"),
+2: SubResource("Resource_rwvyi")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
+
+[sub_resource type="Resource" id="Resource_4y70o"]
+resource_local_to_scene = true
+script = ExtResource("5_0i5h3")
+game_station_stats = Dictionary[int, ExtResource("4_3n0ku")]({
+1: SubResource("Resource_7tgfk"),
+2: SubResource("Resource_rwvyi")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_stteb"]
 vertices = PackedVector2Array(891.8281, 630, -37.632813, 630, -14.34375, -6.3828125, 759.84375, -37.65625)
@@ -42,10 +67,12 @@ station_stats = SubResource("Resource_3n0ku")
 [node name="Person" parent="." instance=ExtResource("2_stteb")]
 position = Vector2(128, 328)
 id = 1
+person_stats = SubResource("Resource_e18af")
 
 [node name="Person2" parent="." instance=ExtResource("2_stteb")]
 position = Vector2(344, 352)
 id = 2
+person_stats = SubResource("Resource_4y70o")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_stteb")

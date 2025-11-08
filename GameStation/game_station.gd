@@ -14,9 +14,11 @@ const error_station_distance: float = 20.0
 @onready var progress_bar: ProgressBar = $ProgressBar
 
 signal won_prize(tickets: int)
+signal game_won(id: int)
+signal game_lost(id: int)
 
-var assigned_person: Node2D = null
-var player_person: Node2D = null
+var assigned_person: Person = null
+var player_person: Person = null
 var highlighted: bool = false
 var waiting_for_player: bool = false
 
@@ -52,10 +54,19 @@ func _process(_delta: float) -> void:
 			# Assign new player
 			waiting_for_player = false
 			player_person = assigned_person
+			player_person.current_machine = self
+			player_person.is_playing = true
 			assigned_person = null
 			start_round()
+			if !game_lost.has_connections():
+				game_lost.connect(player_person.person_stats._on_loss)
+				game_won.connect(player_person.person_stats._on_win)
 	
 	if player_person and player_person.global_position.distance_to(required_position.global_position) > error_station_distance:
+		game_lost.disconnect(player_person.person_stats._on_loss)
+		game_won.disconnect(player_person.person_stats._on_win)
+		player_person.is_playing = false
+		player_person.current_machine = null
 		player_person = null
 		progress_bar.hide()
 
@@ -64,17 +75,20 @@ func end_round() -> void:
 	if !player_person:
 		return
 	if station_stats.is_round_won():
+		game_won.emit(station_id)
 		var prize := station_stats.get_prize()
 		won_prize.emit(prize)
 		GameManager.no_collected_tickets += prize
 		print("Tickets: ", GameManager.no_collected_tickets)
+	else:
+		game_lost.emit(station_id)
 	start_round()
 
 func start_round() -> void:
 	# TODO: if paid
 	timer.start(station_stats.get_game_length())
+	_update_progress_bar()
 	progress_bar.show()
-	print("Person ", player_person.id ," started round on station with id: ", station_id)
 
 func _update_progress_bar() -> void:
 	var time_passed: float = station_stats.game_length - timer.time_left
