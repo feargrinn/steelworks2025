@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dp0sg0jqwyope" path="res://person/grid.png" id="4_us0j2"]
 [ext_resource type="PackedScene" uid="uid://brp7qk3itnw6o" path="res://ghost/ghost_spawner.tscn" id="5_us0j2"]
 [ext_resource type="Script" uid="uid://b34awb8mabkru" path="res://person/person_stats.gd" id="5_wv3y0"]
-[ext_resource type="Script" uid="uid://c1tyxopfhs18s" path="res://ghost/wave.gd" id="6_4pjdj"]
+[ext_resource type="Script" path="res://ghost/wave.gd" id="6_4pjdj"]
 
 [sub_resource type="Resource" id="Resource_5xm6i"]
 script = ExtResource("2_ncl56")

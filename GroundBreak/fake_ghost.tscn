@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcy8ql4ilcsca"]
+
+[ext_resource type="Texture2D" uid="uid://dikkgjob1kkj8" path="res://Assets/Graphics/coin.png" id="1_0p50f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngb5e"]
+
+[node name="FakeGhost" type="PathFollow2D"]
+loop = false
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_ngb5e")
+
+[node name="Coin" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_0p50f")
