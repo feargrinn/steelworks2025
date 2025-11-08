@@ -1,5 +1,10 @@
 extends Control
 
+func _ready() -> void:
+	var new_high_score = FileAccess.open("user://save", FileAccess.READ)
+	GameManager.high_score = new_high_score.get_as_text()
+	$VBoxContainer/VBoxContainer/Label.text = 'Best Time: ' + new_high_score.get_as_text()
+	new_high_score.close()
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://game.tscn")

@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 		get_tree().paused = true
 	
 	
-	if GameManager.no_collected_tickets >= 100:
+	if GameManager.no_collected_tickets >= 0:
 		win()
 	#GameManager.no_collected_tickets += 1
 	#print(GameManager.no_collected_tickets)
@@ -26,7 +26,8 @@ func win():
 	var inst_end = game_end_node.instantiate()
 	var time_node = $%GuiTime.time_formatted
 	inst_end.win_condition = 1
-	inst_end.time_left = time_node
+	inst_end.formatted_time_left = time_node
+	inst_end.time_left = $%GuiTime/Timer.time_left
 	$GUI.add_child(inst_end)
 	get_tree().paused = true
 	#print('you won!!! time left: ' + time_node)
