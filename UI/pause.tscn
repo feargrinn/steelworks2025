@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0qj04rgilc7j"]
+[gd_scene load_steps=3 format=3 uid="uid://d0qj04rgilc7j"]
 
 [ext_resource type="Script" uid="uid://cckwefygs2ab8" path="res://UI/pause.gd" id="1_6wphx"]
+[ext_resource type="Script" uid="uid://nhgqr5posukk" path="res://UI/button_click.gd" id="2_jixca"]
 
 [node name="Pause" type="Control"]
 process_mode = 3
@@ -41,14 +42,17 @@ text = "high score:"
 [node name="BackToGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "BAK TO GAM"
+script = ExtResource("2_jixca")
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "SETTINGS"
+script = ExtResource("2_jixca")
 
 [node name="BackToMainMenu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "BAK TO MAIN MENU"
+script = ExtResource("2_jixca")
 
 [connection signal="pressed" from="VBoxContainer/BackToGame" to="." method="_on_back_to_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]

@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b0mmsdegunt2e" path="res://Music/victory_jingiel.ogg" id="10_rurwj"]
 
 [node name="AudioManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_jisk1")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
@@ -32,12 +33,11 @@ bus = &"SFX"
 
 [node name="footstep" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_yfb3t")
-max_polyphony = 5
+volume_db = 12.0
 bus = &"SFX"
 
 [node name="ghost_death" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("3_2ovay")
-volume_db = 6.0
 pitch_scale = 2.0
 bus = &"SFX"
 

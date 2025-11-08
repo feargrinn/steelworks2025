@@ -17,7 +17,7 @@ var get_random_left_pos := func() -> Vector2: return Vector2(
 	viewport_rect.position.y + viewport_rect.size.y * randf_range(0, 1)
 )
 # Called when the node enters the scene tree for the first time.
-
+var steps_to_walking = 0
 func _ready() -> void:
 	var start_point
 	var end_point
@@ -37,13 +37,15 @@ func _ready() -> void:
 	var points : Array
 	var midpoints : Array
 	points.append(start_point)
+	$Line2D.add_point(start_point)
 	for i in range(randi_range(2,5)):
 		midpoints.append(Vector2i(randi_range(0,1152),randi_range(0,648)))
 	midpoints.sort()
 	for i in midpoints:
 		points.append(i)
+		$Line2D.add_point(i)
 	points.append(end_point)
-	
+	$Line2D.add_point(end_point)
 	
 	if randi_range(0,1) == 0:
 		points.reverse()
@@ -55,6 +57,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	
 	for fakegost in get_tree().get_nodes_in_group('fake_ghost_support_club'):
 		fakegost.progress += 100 * _delta
 		if fakegost.progress_ratio == 1.0:
@@ -66,7 +69,12 @@ func _process(_delta: float) -> void:
 
 
 func _on_spawn_cooldown_timeout() -> void:
-	if !$Timer.is_stopped():
+	
+	if steps_to_walking < 5:
+		$Line2D.visible = true
+	elif !$Timer.is_stopped():
+		$Line2D.visible = false
 		var fakeghost = preload("res://GroundBreak/fake_ghost.tscn").instantiate()
 		fakeghost.add_to_group('fake_ghost_support_club') 
 		$Path2D.add_child(fakeghost)
+	steps_to_walking +=1

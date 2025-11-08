@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjcvya11vaes"]
+[gd_scene load_steps=3 format=3 uid="uid://bjcvya11vaes"]
 
 [ext_resource type="Script" uid="uid://6ns8xhcssx8v" path="res://UI/menu_buttons.gd" id="1_p8ccj"]
+[ext_resource type="Script" uid="uid://nhgqr5posukk" path="res://UI/button_click.gd" id="2_tk8dj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -44,18 +45,22 @@ text = "high score:"
 [node name="Play" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "PLAY"
+script = ExtResource("2_tk8dj")
 
 [node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "SETTINGS"
+script = ExtResource("2_tk8dj")
 
 [node name="Credits" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "CREDITS"
+script = ExtResource("2_tk8dj")
 
 [node name="Quit" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
+script = ExtResource("2_tk8dj")
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

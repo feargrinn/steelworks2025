@@ -110,6 +110,7 @@ func end_round() -> void:
 	if !player_person:
 		return
 	if station_stats.is_round_won():
+		AudioManager.play_sfx("ticket_collected")
 		game_won.emit(station_id)
 		var prize := station_stats.get_prize()
 		won_prize.emit(prize)

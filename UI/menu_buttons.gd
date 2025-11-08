@@ -2,7 +2,7 @@ extends Control
 
 func _ready() -> void:
 	var new_high_score = FileAccess.open("user://save", FileAccess.READ)
-	GameManager.high_score = new_high_score.get_as_text()
+	GameManager.high_score = int(new_high_score.get_as_text())
 	$VBoxContainer/VBoxContainer/Label.text = 'Best Time: ' + new_high_score.get_as_text()
 	new_high_score.close()
 

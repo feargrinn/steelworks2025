@@ -82,7 +82,7 @@ shape = SubResource("RectangleShape2D_0kk21")
 position = Vector2(0, 96)
 
 [node name="GoAwayPosition" type="Marker2D" parent="."]
-position = Vector2(96, 96)
+position = Vector2(224, 96)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
