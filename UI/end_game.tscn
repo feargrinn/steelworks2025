@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dh25ri3kk4lrl"]
+[gd_scene load_steps=3 format=3 uid="uid://dh25ri3kk4lrl"]
 
 [ext_resource type="Script" uid="uid://c5gqvpnjjmwaw" path="res://end_game.gd" id="1_u11pd"]
+[ext_resource type="Script" uid="uid://nhgqr5posukk" path="res://UI/button_click.gd" id="2_xqbdw"]
 
 [node name="EndGame" type="Control"]
 process_mode = 3
@@ -49,10 +50,12 @@ layout_mode = 2
 z_index = 100
 layout_mode = 2
 text = "START AGAIN"
+script = ExtResource("2_xqbdw")
 
 [node name="GoBack" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "GO BACK TO MAIN MENU"
+script = ExtResource("2_xqbdw")
 
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/GoBack" to="." method="_on_go_back_pressed"]
