@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 		get_tree().paused = true
 	
 	
-	if GameManager.no_collected_tickets >= 0:
+	if GameManager.no_collected_tickets >= 1000:
 		win()
 	#GameManager.no_collected_tickets += 1
 	#print(GameManager.no_collected_tickets)
