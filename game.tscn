@@ -1,3 +1,7 @@
-[gd_scene load_steps=0 format=3 uid="uid://dbbmenxoxt7dg"]
+[gd_scene load_steps=2 format=3 uid="uid://dbbmenxoxt7dg"]
+
+[ext_resource type="PackedScene" uid="uid://bhj7katvxv5ra" path="res://UI/gui_time.tscn" id="1_80nbo"]
 
 [node name="Game" type="Node2D"]
+
+[node name="gui_time" parent="." instance=ExtResource("1_80nbo")]

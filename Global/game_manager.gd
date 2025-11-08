@@ -4,6 +4,7 @@ var no_collected_tickets: int = 0
 var currently_selected_person: Person = null
 var pause_screen = preload("res://UI/pause.tscn")
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
