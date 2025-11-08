@@ -36,12 +36,19 @@ func _physics_process(delta: float) -> void:
 	var ghosts := get_tree().get_nodes_in_group("ghost")
 	ghosts.sort_custom(
 		func(ghost1: Node2D, ghost2: Node2D): return (position - ghost1.position).length() < (position - ghost2.position).length())
+	var persons = get_tree().get_nodes_in_group("person")
+	persons.erase(self)
+	persons.sort_custom(func(p1: Person, p2: Person): return position.distance_to(p1.position) < position.distance_to(p2.position))
 	if len(ghosts) > 0 and (position - ghosts[0].position).length() < scary_distance:
 		var dir = ghosts[0].position.direction_to(position)
 		dir = dir if not dir.length() == 0 else Vector2.from_angle(randf_range(0, 2*PI))
 		velocity = dir * person_stats.speed
 	elif not navigation_agent_2d.is_navigation_finished():
 		var dir := to_local(navigation_agent_2d.get_next_path_position()).normalized()
+		velocity = dir * person_stats.speed
+	elif position.distance_to(persons[0].position) < 50:
+		var dir = persons[0].position.direction_to(position)
+		print(dir)
 		velocity = dir * person_stats.speed
 	else:
 		velocity = Vector2.ZERO
