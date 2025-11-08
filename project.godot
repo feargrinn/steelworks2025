@@ -21,6 +21,10 @@ game_manager="*res://Global/game_manager.gd"
 GameManager="*res://Global/game_manager.gd"
 AudioManager="*res://UI/audio_manager.tscn"
 
+[display]
+
+window/size/resizable=false
+
 [global_group]
 
 person=""

@@ -20,31 +20,52 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.23392546, 0.23392546, 0.23392543, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="Quit_Settings" type="Button" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="Quit_Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
 text = "quit"
 
-[node name="Music" type="Label" parent="VBoxContainer"]
+[node name="Music" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "music volume"
 
-[node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 
-[node name="Sfx" type="Label" parent="VBoxContainer"]
+[node name="Sfx" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "sfx volume"
 
-[node name="SfxSlider2" type="HSlider" parent="VBoxContainer"]
+[node name="SfxSlider2" type="HSlider" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[connection signal="pressed" from="VBoxContainer/Quit_Settings" to="." method="_on_quit_settings_pressed"]
-[connection signal="value_changed" from="VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/SfxSlider2" to="." method="_on_sfx_slider_2_value_changed"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fullscreen"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit_Settings" to="." method="_on_quit_settings_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SfxSlider2" to="." method="_on_sfx_slider_2_value_changed"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_button_down"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_button_up"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
