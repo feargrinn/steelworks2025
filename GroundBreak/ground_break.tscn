@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://yfmoikq08mhm"]
+
+[ext_resource type="Script" uid="uid://1t4c6ce42vqc" path="res://ground_break.gd" id="1_6iapa"]
+
+[sub_resource type="Curve2D" id="Curve2D_tbasa"]
+
+[node name="GroundBreak" type="Node2D"]
+script = ExtResource("1_6iapa")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_tbasa")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="SpawnCooldown" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
