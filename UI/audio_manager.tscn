@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://laxohdmpt8l1"]
+[gd_scene load_steps=11 format=3 uid="uid://cq4muywmqqod6"]
 
 [ext_resource type="Script" uid="uid://bqvenp6aygy3v" path="res://UI/audio_manager.gd" id="1_jisk1"]
 [ext_resource type="AudioStream" uid="uid://cxovcinx77k3m" path="res://Music/music_demo.ogg" id="2_rw5qr"]
+[ext_resource type="AudioStream" uid="uid://brck5snhw3dpy" path="res://Music/click.ogg" id="3_0fw3q"]
+[ext_resource type="AudioStream" uid="uid://bre6sjbfsqv3" path="res://Music/ghost_death.ogg" id="3_2ovay"]
+[ext_resource type="AudioStream" uid="uid://dac14ylbbvpcl" path="res://Music/ticket_collected.ogg" id="4_6qboy"]
+[ext_resource type="AudioStream" uid="uid://cmp0naibfj6uv" path="res://Music/defeat.ogg" id="4_ianfe"]
+[ext_resource type="AudioStream" uid="uid://cxbqv7o6kjnik" path="res://Music/footstep.wav" id="5_yfb3t"]
+[ext_resource type="AudioStream" uid="uid://6s8kdndtn5mk" path="res://Music/ghost_wave.ogg" id="7_1qqlg"]
+[ext_resource type="AudioStream" uid="uid://ckbf4bug7xypm" path="res://Music/too_tired.ogg" id="9_cgmiv"]
+[ext_resource type="AudioStream" uid="uid://b0mmsdegunt2e" path="res://Music/victory_jingiel.ogg" id="10_rurwj"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_jisk1")
@@ -12,7 +20,42 @@ stream = ExtResource("2_rw5qr")
 autoplay = true
 bus = &"Music"
 
-[node name="SFX" type="AudioStreamPlayer" parent="."]
-autoplay = true
-max_polyphony = 10
+[node name="sfx" type="Node" parent="."]
+
+[node name="click" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("3_0fw3q")
+bus = &"SFX"
+
+[node name="defeat" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_ianfe")
+bus = &"SFX"
+
+[node name="footstep" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("5_yfb3t")
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="ghost_death" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("3_2ovay")
+volume_db = 6.0
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="ghost_wave" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("7_1qqlg")
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="ticket_collected" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_6qboy")
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="too_tired" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("9_cgmiv")
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="victory_jingiel" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("10_rurwj")
 bus = &"SFX"
