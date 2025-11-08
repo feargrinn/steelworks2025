@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bju83lqmpv8l0"]
+[gd_scene load_steps=10 format=3 uid="uid://bju83lqmpv8l0"]
 
 [ext_resource type="Script" uid="uid://or6jxiwn13ui" path="res://GameStation/game_station.gd" id="1_1rg1j"]
 [ext_resource type="Texture2D" uid="uid://cwvjj4goryojp" path="res://GameStation/stacjatest.png" id="2_4rapk"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_vp250"]
 [ext_resource type="Texture2D" uid="uid://cmlgjr7hlv3sc" path="res://GameStation/stacjabroken.png" id="3_vp250"]
+[ext_resource type="Texture2D" uid="uid://dokrqbvwwj484" path="res://Assets/Graphics/tikit.png" id="5_wdeg8"]
 
 [sub_resource type="Resource" id="Resource_wdeg8"]
 resource_local_to_scene = true
@@ -66,6 +67,7 @@ show_percentage = false
 sprite_frames = SubResource("SpriteFrames_vp250")
 
 [node name="WonPrizeLabel" type="Label" parent="."]
+visible = false
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -85,6 +87,9 @@ layout_mode = 0
 offset_left = 38.0
 offset_right = 58.0
 offset_bottom = 20.0
+texture = ExtResource("5_wdeg8")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
