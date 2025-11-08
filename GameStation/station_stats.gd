@@ -39,14 +39,13 @@ func is_round_won() -> bool:
 	return is_equal_approx(game_length, max_game_length)
 
 
-func calculate_profitability() -> float:
+func calculate_profitability(player_win_chance := 0.5) -> float:
 	var average_tickets_on_win := float(max_tickets - min_tickets) / 2
 	var average_game_time := (max_game_length - min_game_length) / 2
 	var average_tickets_on_win_per_second := (
 			average_tickets_on_win / average_game_time)
 	
-	const PLAYER_WIN_CHANCE := 0.5
-	var win_probability := base_win_chance * PLAYER_WIN_CHANCE
+	var win_probability := base_win_chance * player_win_chance
 	var average_tickets_per_second := (
 			average_tickets_on_win_per_second * win_probability)
 	

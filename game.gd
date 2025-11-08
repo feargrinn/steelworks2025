@@ -4,11 +4,11 @@ var game_end_node = load("res://UI/end_game.tscn")
 @onready var timer: Timer = $Timer
 @onready var gui: Gui = %Gui
 
-@export var level_time: float = 60.0
+#@export var level_time: float = 60.0
 	
 func _ready() -> void:
 	GameManager.no_collected_tickets = 0
-	timer.wait_time = level_time
+	timer.wait_time = GameManager.GAME_LENGTH
 	timer.start()
 	
 	
@@ -18,12 +18,11 @@ func _process(_delta: float) -> void:
 		$GUI.add_child(pause_screen.instantiate())
 		get_tree().paused = true
 	gui.show_time(timer.time_left)
+	GameManager.time_left = timer.time_left
 		
 
 	if GameManager.no_collected_tickets >= 1000:
 		win()
-	#GameManager.no_collected_tickets += 1
-	#print(GameManager.no_collected_tickets)
 
 
 
@@ -35,14 +34,12 @@ func win():
 	inst_end.time_left = $%GuiTime/Timer.time_left
 	$GUI.add_child(inst_end)
 	get_tree().paused = true
-	#print('you won!!! time left: ' + time_node)
 		
 func lose():
 	var inst_end = game_end_node.instantiate()
 	inst_end.win_condition = 0
 	$GUI.add_child(inst_end)
 	get_tree().paused = true
-	#print('huh you lost. Lser')
 
 
 func _on_timer_timeout() -> void:
