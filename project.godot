@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 GameManager="*res://Global/game_manager.gd"
 AudioManager="*res://UI/audio_manager.tscn"
 
+[display]
+
+window/size/resizable=false
+
 [global_group]
 
 person=""
