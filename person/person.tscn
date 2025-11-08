@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://clq3fnptaamig"]
+[gd_scene load_steps=17 format=3 uid="uid://clq3fnptaamig"]
 
 [ext_resource type="Script" uid="uid://dgema0f02cqo2" path="res://person/person.gd" id="1_ngoep"]
 [ext_resource type="Script" uid="uid://ccgonsjiqsq6x" path="res://person/person_machine_stats.gd" id="2_rwvyi"]
 [ext_resource type="Script" uid="uid://b34awb8mabkru" path="res://person/person_stats.gd" id="3_7tgfk"]
 [ext_resource type="Texture2D" uid="uid://ce4epahvcay1k" path="res://person/person.png" id="3_nhqh4"]
 [ext_resource type="Script" uid="uid://cbiuhrh5s8shy" path="res://person/irritability_display.gd" id="3_xv8dq"]
+[ext_resource type="Texture2D" uid="uid://cjsgec1h75gip" path="res://Assets/Graphics/characters_front_clean.png" id="5_7tgfk"]
 
 [sub_resource type="Resource" id="Resource_7tgfk"]
 script = ExtResource("2_rwvyi")
@@ -27,7 +28,7 @@ metadata/_custom_type_script = "uid://b34awb8mabkru"
 radius = 23.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngoep"]
-size = Vector2(48, 46)
+size = Vector2(64, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ngoep"]
 atlas = ExtResource("3_nhqh4")
@@ -36,6 +37,10 @@ region = Rect2(0, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xv8dq"]
 atlas = ExtResource("3_nhqh4")
 region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a43e"]
+atlas = ExtResource("5_7tgfk")
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qpckf"]
 animations = [{
@@ -49,6 +54,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a43e")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_xv8dq"]
@@ -70,23 +83,27 @@ debug_enabled = true
 shape = SubResource("CircleShape2D_lc72a")
 
 [node name="MouseClickDetection" type="Area2D" parent="."]
+position = Vector2(0, -56)
 collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClickDetection"]
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_ngoep")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -6)
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(0, -56)
 sprite_frames = SubResource("SpriteFrames_qpckf")
-autoplay = "default"
-frame_progress = 0.9712981
+animation = &"idle"
+autoplay = "idle"
 
 [node name="IrritabilityDisplay" type="ColorRect" parent="."]
-offset_left = -6.0
-offset_top = -44.0
-offset_right = 7.0
-offset_bottom = -31.0
+offset_left = -8.0
+offset_top = -128.0
+offset_right = 5.0
+offset_bottom = -115.0
 script = ExtResource("3_xv8dq")
 gradient = SubResource("Gradient_xv8dq")
 
@@ -97,10 +114,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.5
-offset_top = -42.0
-offset_right = 21.5
-offset_bottom = -19.0
+offset_left = -20.0
+offset_top = -156.0
+offset_right = 23.0
+offset_bottom = -133.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
