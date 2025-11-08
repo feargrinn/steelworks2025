@@ -20,6 +20,7 @@ signal irritation_changed(irritation_factor: float)
 
 func set_irritation(value) -> void:
 	irritation = value
+	irritation = clamp(irritation, 0, patience)
 	irritation_changed.emit(irritation/patience)
 
 func set_ghosts_survived(value: int) -> void:
@@ -31,13 +32,8 @@ func set_ghosts_survived(value: int) -> void:
 func _on_loss(machine_id: int) -> void:
 	assert(game_station_stats.has(machine_id), "No personal stats for this machine!")
 	irritation += game_station_stats[machine_id].irritation_on_loss
-	if irritation > patience:
-		# Go away from the machine
-		return
 
 
 func _on_win(machine_id: int) -> void:
 	assert(game_station_stats.has(machine_id), "No personal stats for this machine!")
 	irritation -= game_station_stats[machine_id].satisfaction_on_win
-	if irritation < 0:
-		irritation = 0

@@ -26,7 +26,6 @@ func _physics_process(delta: float) -> void:
 			set_target_position(current_machine.go_away_position.global_position)
 	else:
 		person_stats.irritation -= person_stats.calming_down_speed * delta
-		person_stats.irritation = max(person_stats.irritation, 0)
 	if Input.is_action_just_pressed("left_click") and highlighted:
 		GameManager.currently_selected_person = self
 	

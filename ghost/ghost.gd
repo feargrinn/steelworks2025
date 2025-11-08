@@ -1,12 +1,9 @@
 class_name Ghost
 extends Area2D
 
-@export var SPEED: int = 200
+@export var SPEED: int = 100
 
-var node_to_follow: Node2D
-
-func _ready() -> void:
-	node_to_follow = get_tree().get_nodes_in_group("person").pick_random()
+@onready var node_to_follow: Node2D = get_tree().get_nodes_in_group("person").pick_random()
 
 
 func _physics_process(delta: float) -> void:

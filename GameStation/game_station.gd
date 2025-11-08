@@ -11,12 +11,16 @@ const error_station_distance: float = 20.0
 @onready var required_position: Node2D = $PlayerPosition
 @onready var go_away_position: Node2D = $GoAwayPosition
 @onready var timer: Timer = $Timer
+
 @onready var progress_bar: ProgressBar = $ProgressBar
+@onready var won_prize_label: Label = $WonPrizeLabel
+@onready var label_position: Vector2 = $WonPrizeLabel.position
 
 signal won_prize(tickets: int)
 signal game_won(id: int)
 signal game_lost(id: int)
 
+var tween: Tween
 var assigned_person: Person = null
 var player_person: Person = null
 var highlighted: bool = false
@@ -71,6 +75,25 @@ func _process(_delta: float) -> void:
 		player_person = null
 		progress_bar.hide()
 
+func show_prize(prize: int) -> void:
+	won_prize_label.text = "+ " + str(prize)
+	won_prize_label.position = label_position
+	won_prize_label.modulate.a = 1
+	won_prize_label.show()
+	if tween:
+		tween.kill()
+	tween = won_prize_label.create_tween()
+	tween.tween_property(
+			won_prize_label, "position", 
+			won_prize_label.position + Vector2(0, -40), 1.
+			)
+	tween.parallel()
+	tween.tween_property(
+			won_prize_label, "modulate:a", 
+			0, 1.
+			)
+	
+	
 
 func end_round() -> void:
 	if !player_person:
@@ -79,6 +102,7 @@ func end_round() -> void:
 		game_won.emit(station_id)
 		var prize := station_stats.get_prize()
 		won_prize.emit(prize)
+		show_prize(prize)
 		GameManager.no_collected_tickets += prize
 		print("Tickets: ", GameManager.no_collected_tickets)
 	else:
@@ -87,7 +111,10 @@ func end_round() -> void:
 
 func start_round() -> void:
 	# TODO: if paid
-	timer.start(station_stats.get_game_length())
+	var person_chances := (
+		player_person.person_stats.game_station_stats[station_id].win_chance
+	)
+	timer.start(station_stats.get_game_length(person_chances))
 	_update_progress_bar()
 	progress_bar.show()
 
