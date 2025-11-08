@@ -11,10 +11,12 @@ class_name Person
 @onready var irritability_display: IrritabilityDisplay = $IrritabilityDisplay
 @onready var moni_label: Label = $MoniLabel
 
-var outline_material: Material = preload("res://materials/person.tres")
+const material_hover: Material = preload("res://materials/person.tres")
+const material_select: Material = preload("res://materials/person_selected.tres")
 var highlighted: bool = false
 var is_playing: bool = false
 var current_machine: GameStation = null
+var current_material: Material = null
 
 
 func _ready() -> void:
@@ -28,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		person_stats.irritation -= person_stats.calming_down_speed * delta
 	if Input.is_action_just_pressed("left_click") and highlighted:
-		GameManager.currently_selected_person = self
+		GameManager.set_selected_person(self)
 	
 	var ghosts := get_tree().get_nodes_in_group("ghost")
 	ghosts.sort_custom(
@@ -55,8 +57,18 @@ func indicate_not_enough_coins() -> void:
 
 func _on_mouse_click_detection_mouse_entered() -> void:
 	highlighted = true
-	animated_sprite_2d.material = outline_material
+	animated_sprite_2d.material = material_hover
 
 func _on_mouse_click_detection_mouse_exited() -> void:
 	highlighted = false
-	animated_sprite_2d.material = null
+	animated_sprite_2d.material = current_material
+
+func select():
+	current_material = material_select
+	if not animated_sprite_2d.material:
+		animated_sprite_2d.material = current_material
+
+func deselect():
+	current_material = null
+	if animated_sprite_2d.material != material_hover:
+		animated_sprite_2d.material = null
