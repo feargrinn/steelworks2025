@@ -31,6 +31,8 @@ func _physics_process(delta: float) -> void:
 		person_stats.irritation -= person_stats.calming_down_speed * delta
 	if Input.is_action_just_pressed("left_click") and highlighted:
 		GameManager.set_selected_person(self)
+		var stats_viewer := PersonStatsViewer.instantiate(person_stats)
+		add_child(stats_viewer)
 	
 	var ghosts := get_tree().get_nodes_in_group("ghost")
 	ghosts.sort_custom(

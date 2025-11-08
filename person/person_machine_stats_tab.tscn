@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dak5y162eigfa"]
+
+[ext_resource type="Script" uid="uid://c5q51u1by4hs0" path="res://person/person_machine_stats_tab.gd" id="1_e0bx3"]
+
+[node name="PersonMachineStatsTab" type="MarginContainer"]
+script = ExtResource("1_e0bx3")
+metadata/_tab_index = 0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Win chance"
+
+[node name="WinChance" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Irritation"
+
+[node name="Irritation" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3

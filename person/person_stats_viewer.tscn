@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://dum8w0fd4kyw3"]
+
+[ext_resource type="Script" uid="uid://dji83gru1oq1f" path="res://person/person_stats_viewer.gd" id="1_ju1rq"]
+[ext_resource type="Script" uid="uid://ccgonsjiqsq6x" path="res://person/person_machine_stats.gd" id="2_2f6fh"]
+[ext_resource type="Script" uid="uid://b34awb8mabkru" path="res://person/person_stats.gd" id="3_i43sk"]
+
+[sub_resource type="Resource" id="Resource_2f6fh"]
+script = ExtResource("2_2f6fh")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_i43sk"]
+script = ExtResource("2_2f6fh")
+win_chance = 0.82
+irritation_on_loss = 44
+satisfaction_on_win = 64
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_18jke"]
+script = ExtResource("3_i43sk")
+game_station_stats = Dictionary[int, ExtResource("2_2f6fh")]({
+0: SubResource("Resource_2f6fh"),
+1: SubResource("Resource_i43sk")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
+
+[node name="PersonStatsViewer" type="PanelContainer"]
+offset_right = 249.0
+offset_bottom = 136.0
+script = ExtResource("1_ju1rq")
+stats = SubResource("Resource_18jke")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed"
+horizontal_alignment = 1
+
+[node name="Speed" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Patience"
+horizontal_alignment = 1
+
+[node name="Patience" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Calming down speed"
+horizontal_alignment = 1
+
+[node name="CalmingDownSpeed" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Coins"
+horizontal_alignment = 1
+
+[node name="Coins" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
