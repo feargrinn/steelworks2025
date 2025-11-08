@@ -53,7 +53,10 @@ func _process(_delta: float) -> void:
 			assigned_person.set_target_position(required_position.global_position)
 			print("Person ", assigned_person.id ," goes towards station with id: ", station_id)
 			GameManager.set_selected_person(null)
-	
+		else:
+			add_child(StationStatsViewer.instantiate(station_stats))
+
+
 	# Checking if the person has finished walking to the station
 	if assigned_person != null:
 		if waiting_for_player and assigned_person.global_position.distance_to(required_position.global_position) <= error_station_distance:
@@ -82,7 +85,8 @@ func _kill_station() -> void: # Station becomes inactive
 	if player_person: player_person.set_target_position(go_away_position.global_position)
 	animated_sprite_2d.animation = "ded"
 	progress_bar.hide()
-
+	
+	
 func show_prize(prize: int) -> void:
 	won_prize_label.text = "+ " + str(prize)
 	won_prize_label.position = label_position
@@ -118,7 +122,7 @@ func end_round() -> void:
 	start_round()
 
 func start_round() -> void:
-	if station_stats.aviable_tickets <= 0:
+	if station_stats.available_tickets <= 0:
 		return
 	if player_person.person_stats.coins < station_stats.price:
 		player_person.indicate_not_enough_coins()
