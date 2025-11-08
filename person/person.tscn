@@ -1,7 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://clq3fnptaamig"]
+[gd_scene load_steps=15 format=3 uid="uid://clq3fnptaamig"]
 
 [ext_resource type="Script" uid="uid://dgema0f02cqo2" path="res://person/person.gd" id="1_ngoep"]
+[ext_resource type="Script" uid="uid://ccgonsjiqsq6x" path="res://person/person_machine_stats.gd" id="2_rwvyi"]
+[ext_resource type="Script" uid="uid://b34awb8mabkru" path="res://person/person_stats.gd" id="3_7tgfk"]
 [ext_resource type="Texture2D" uid="uid://ce4epahvcay1k" path="res://person/person.png" id="3_nhqh4"]
+[ext_resource type="Script" uid="uid://cbiuhrh5s8shy" path="res://person/irritability_display.gd" id="3_xv8dq"]
+
+[sub_resource type="Resource" id="Resource_rwvyi"]
+script = ExtResource("2_rwvyi")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_7tgfk"]
+script = ExtResource("2_rwvyi")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_5a43e"]
+resource_local_to_scene = true
+script = ExtResource("3_7tgfk")
+game_station_stats = Dictionary[int, ExtResource("2_rwvyi")]({
+1: SubResource("Resource_7tgfk"),
+2: SubResource("Resource_rwvyi")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc72a"]
 radius = 23.0
@@ -31,11 +51,17 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_xv8dq"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.47008547, 1)
+colors = PackedColorArray(0, 1, 0, 1, 1, 0.7921569, 0, 1, 1, 0, 0, 1)
+
 [node name="Person" type="CharacterBody2D" groups=["person"]]
 z_index = 1
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ngoep")
+person_stats = SubResource("Resource_5a43e")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
@@ -55,6 +81,14 @@ position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_qpckf")
 autoplay = "default"
 frame_progress = 0.9712981
+
+[node name="IrritabilityDisplay" type="ColorRect" parent="."]
+offset_left = -6.0
+offset_top = -44.0
+offset_right = 7.0
+offset_bottom = -31.0
+script = ExtResource("3_xv8dq")
+gradient = SubResource("Gradient_xv8dq")
 
 [connection signal="mouse_entered" from="MouseClickDetection" to="." method="_on_mouse_click_detection_mouse_entered"]
 [connection signal="mouse_exited" from="MouseClickDetection" to="." method="_on_mouse_click_detection_mouse_exited"]
