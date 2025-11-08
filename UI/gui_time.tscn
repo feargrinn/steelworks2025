@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhj7katvxv5ra"]
+[gd_scene load_steps=2 format=3 uid="uid://dagph6hj6hiey"]
 
 [ext_resource type="Script" uid="uid://gqgceiuq5rtu" path="res://gui_time.gd" id="1_pjr7o"]
 
-[node name="GuiTime" type="Control"]
+[node name="Gui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,10 +44,3 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Tickets: "
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
