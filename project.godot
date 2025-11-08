@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 GameManager="*res://Global/game_manager.gd"
 
+[global_group]
+
+person=""
+ghost=""
+
 [input]
 
 left_click={
