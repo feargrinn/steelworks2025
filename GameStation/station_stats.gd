@@ -14,11 +14,11 @@ var game_length: float
 func get_prize() -> int:
 	return randi_range(min_tickets, max_tickets)
 
-func get_game_result(player_chances := 1) -> bool:
+func get_game_result(player_chances := 1.) -> bool:
 	return randf_range(0, 1) <= base_win_chance * player_chances
 
-func get_game_length() -> float:
-	var result := get_game_result()
+func get_game_length(player_chances := 1.) -> float:
+	var result := get_game_result(player_chances)
 	if result:
 		game_length = max_game_length
 		return max_game_length

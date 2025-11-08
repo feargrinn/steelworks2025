@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://or6jxiwn13ui" path="res://GameStation/game_station.gd" id="1_1rg1j"]
 [ext_resource type="Texture2D" uid="uid://cwvjj4goryojp" path="res://GameStation/stacjatest.png" id="2_4rapk"]
-[ext_resource type="Script" path="res://GameStation/station_stats.gd" id="2_vp250"]
+[ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_vp250"]
 
 [sub_resource type="Resource" id="Resource_wdeg8"]
 script = ExtResource("2_vp250")
@@ -45,7 +45,6 @@ position = Vector2(64, 56)
 one_shot = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
 offset_left = -37.0
 offset_top = -58.0
 offset_right = 35.0
@@ -54,6 +53,23 @@ show_percentage = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vp250")
+
+[node name="WonPrizeLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -36.0
+offset_right = 20.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "+ 4"
+horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

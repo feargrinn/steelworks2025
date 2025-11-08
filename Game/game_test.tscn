@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cihsoql26ea6q"]
+[gd_scene load_steps=15 format=3 uid="uid://cihsoql26ea6q"]
 
 [ext_resource type="PackedScene" uid="uid://bju83lqmpv8l0" path="res://GameStation/game_station.tscn" id="1_27slg"]
 [ext_resource type="PackedScene" uid="uid://clq3fnptaamig" path="res://person/person.tscn" id="2_stteb"]
@@ -21,22 +21,33 @@ min_tickets = 10
 max_tickets = 15
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
-[sub_resource type="Resource" id="Resource_7tgfk"]
+[sub_resource type="Resource" id="Resource_e18af"]
 script = ExtResource("4_3n0ku")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_dac6k"]
+script = ExtResource("4_3n0ku")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_0i5h3"]
+script = ExtResource("5_0i5h3")
+game_station_stats = Dictionary[int, ExtResource("4_3n0ku")]({
+1: SubResource("Resource_e18af"),
+2: SubResource("Resource_dac6k")
+})
+metadata/_custom_type_script = "uid://b34awb8mabkru"
+
+[sub_resource type="Resource" id="Resource_7tgfk"]
+resource_local_to_scene = true
+script = ExtResource("4_3n0ku")
+win_chance = 1.0
 metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 
 [sub_resource type="Resource" id="Resource_rwvyi"]
-script = ExtResource("4_3n0ku")
-metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
-
-[sub_resource type="Resource" id="Resource_e18af"]
 resource_local_to_scene = true
-script = ExtResource("5_0i5h3")
-game_station_stats = Dictionary[int, ExtResource("4_3n0ku")]({
-1: SubResource("Resource_7tgfk"),
-2: SubResource("Resource_rwvyi")
-})
-metadata/_custom_type_script = "uid://b34awb8mabkru"
+script = ExtResource("4_3n0ku")
+win_chance = 1.0
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 
 [sub_resource type="Resource" id="Resource_4y70o"]
 resource_local_to_scene = true
@@ -67,7 +78,7 @@ station_stats = SubResource("Resource_3n0ku")
 [node name="Person" parent="." instance=ExtResource("2_stteb")]
 position = Vector2(128, 328)
 id = 1
-person_stats = SubResource("Resource_e18af")
+person_stats = SubResource("Resource_0i5h3")
 
 [node name="Person2" parent="." instance=ExtResource("2_stteb")]
 position = Vector2(344, 352)
