@@ -7,7 +7,7 @@ const error_station_distance: float = 20.0
 @export var station_id: int = 0 # Maybe unnecessary
 @export var station_stats: StationStats
 
-@onready var highlight_sprite = $Highlight
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var required_position: Node2D = $PlayerPosition
 @onready var go_away_position: Node2D = $GoAwayPosition
 @onready var timer: Timer = $Timer
@@ -20,8 +20,9 @@ var player_person: Node2D = null
 var highlighted: bool = false
 var waiting_for_player: bool = false
 
+var outline_material: Material = preload("res://materials/person.tres")
+
 func _ready() -> void:
-	highlight_sprite.hide()
 	timer.timeout.connect(end_round)
 	progress_bar.max_value = station_stats.max_game_length
 
@@ -81,8 +82,8 @@ func _update_progress_bar() -> void:
 
 func _on_mouse_entered() -> void:
 	highlighted = true
-	highlight_sprite.show()
+	animated_sprite_2d.material = outline_material
 	
 func _on_mouse_exited() -> void:
 	highlighted = false
-	highlight_sprite.hide()
+	animated_sprite_2d.material = null
