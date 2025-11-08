@@ -1,6 +1,6 @@
 extends Node
 
-var no_collected_tickets: int = 0
+var no_collected_tickets: int = 1000
 var currently_selected_person: Person = null
 var pause_screen = preload("res://UI/pause.tscn")
 
@@ -15,3 +15,14 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed('pause'):
 		add_child(pause_screen.instantiate())
 		get_tree().paused = true
+	if no_collected_tickets >= 1000:
+		win()
+
+func win():
+	var time_node = get_tree().get_root().get_node("GuiTime").time_formatted
+	print('you won!!! time left:' + time_node)
+	
+	
+	
+func lose():
+	print('huh you lost. Lser')

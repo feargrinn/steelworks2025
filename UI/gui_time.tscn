@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gqgceiuq5rtu" path="res://gui_time.gd" id="1_pjr7o"]
 
-[node name="gui_time" type="Control"]
+[node name="GuiTime" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
