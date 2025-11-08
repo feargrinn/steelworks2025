@@ -4,6 +4,7 @@ class_name Person
 
 @export var id: int = 0 # Maybe unnecessary
 @export var speed: float = 200
+@export var scary_distance: float = 100
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -21,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 	var ghosts := get_tree().get_nodes_in_group("ghost")
 	ghosts.sort_custom(
 		func(ghost1: Node2D, ghost2: Node2D): return (position - ghost1.position).length() < (position - ghost2.position).length())
-	if len(ghosts) > 0 and (position - ghosts[0].position).length() < 100:
+	if len(ghosts) > 0 and (position - ghosts[0].position).length() < scary_distance:
 		var dir = ghosts[0].position.direction_to(position)
 		dir = dir if not dir.length() == 0 else Vector2.from_angle(randf_range(0, 2*PI))
 		velocity = dir * speed
