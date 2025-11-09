@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk2gxww5lmy26"]
+
+[ext_resource type="Texture2D" uid="uid://dtrju8dioejkn" path="res://Assets/Graphics/Tutorials/tuto_clicking.png" id="1_222br"]
+[ext_resource type="Texture2D" uid="uid://bkjschaar1v4c" path="res://Assets/Graphics/Tutorials/tuto_stations.png" id="2_8h6nf"]
+[ext_resource type="Texture2D" uid="uid://domshxx6wfh6l" path="res://Assets/Graphics/Tutorials/tuto_patience.png" id="3_rso3y"]
+[ext_resource type="Texture2D" uid="uid://b2ps3tsg7eh02" path="res://Assets/Graphics/Tutorials/tuto_ghost.png" id="4_n4ihd"]
+[ext_resource type="Texture2D" uid="uid://bwroaqc4c0t0" path="res://Assets/Graphics/Tutorials/tuto_winning.png" id="5_itvf6"]
+[ext_resource type="Script" uid="uid://des5nhjhmj7v1" path="res://Tutorial/tutorial.gd" id="6_8h6nf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gotrj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_222br")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8h6nf")
+}],
+"loop": false,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rso3y")
+}],
+"loop": false,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n4ihd")
+}],
+"loop": false,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_itvf6")
+}],
+"loop": false,
+"name": &"4",
+"speed": 5.0
+}]
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 360)
+sprite_frames = SubResource("SpriteFrames_gotrj")
+animation = &"0"
+script = ExtResource("6_8h6nf")
