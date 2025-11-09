@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://clq3fnptaamig"]
+[gd_scene load_steps=44 format=3 uid="uid://clq3fnptaamig"]
 
 [ext_resource type="Script" uid="uid://dgema0f02cqo2" path="res://person/person.gd" id="1_ngoep"]
 [ext_resource type="Script" uid="uid://ccgonsjiqsq6x" path="res://person/person_machine_stats.gd" id="2_rwvyi"]
@@ -48,6 +48,17 @@ radius = 23.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngoep"]
 size = Vector2(64, 128)
+
+[sub_resource type="Gradient" id="Gradient_rwvyi"]
+offsets = PackedFloat32Array(0.4375, 0.69140625)
+colors = PackedColorArray(0, 0, 0, 0.3529412, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7tgfk"]
+gradient = SubResource("Gradient_rwvyi")
+width = 96
+height = 48
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwvyi"]
 atlas = ExtResource("4_rwvyi")
@@ -329,12 +340,16 @@ collision_mask = 128
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_ngoep")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+texture = SubResource("GradientTexture2D_7tgfk")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, -56)
 sprite_frames = SubResource("SpriteFrames_qpckf")
-animation = &"idle1"
+animation = &"right3"
 autoplay = "idle0"
 
 [node name="IrritabilityDisplay" type="ColorRect" parent="."]

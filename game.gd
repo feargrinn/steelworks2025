@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 	else:
 		AudioManager.set_sfx_playing("footstep", false)
 
-	if GameManager.no_collected_tickets >= 1:
+	if GameManager.no_collected_tickets >= 1000:
 		win()
 
 

@@ -141,6 +141,7 @@ shape = SubResource("CircleShape2D_2iaaw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.41568628)
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_mrk1n")
 autoplay = "default"
 

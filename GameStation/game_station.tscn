@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bju83lqmpv8l0"]
+[gd_scene load_steps=18 format=3 uid="uid://bju83lqmpv8l0"]
 
 [ext_resource type="Script" uid="uid://or6jxiwn13ui" path="res://GameStation/game_station.gd" id="1_1rg1j"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_vp250"]
@@ -12,6 +12,16 @@ metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kk21"]
 size = Vector2(64, 128)
+
+[sub_resource type="Gradient" id="Gradient_wdeg8"]
+offsets = PackedFloat32Array(0.4140625, 0.65234375)
+colors = PackedColorArray(0, 0, 0, 0.43529412, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_adk7m"]
+gradient = SubResource("Gradient_wdeg8")
+width = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_adk7m"]
 atlas = ExtResource("4_wdeg8")
@@ -105,6 +115,10 @@ offset_top = -96.0
 offset_right = 32.0
 offset_bottom = -69.0
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 51)
+texture = SubResource("GradientTexture2D_adk7m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vp250")

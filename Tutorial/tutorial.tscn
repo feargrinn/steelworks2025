@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk2gxww5lmy26"]
+[gd_scene load_steps=10 format=3 uid="uid://bk2gxww5lmy26"]
 
 [ext_resource type="Texture2D" uid="uid://dtrju8dioejkn" path="res://Assets/Graphics/Tutorials/tuto_clicking.png" id="1_222br"]
+[ext_resource type="Texture2D" uid="uid://w4uno7e4k1gy" path="res://Assets/Graphics/floor.png" id="1_rso3y"]
 [ext_resource type="Texture2D" uid="uid://bkjschaar1v4c" path="res://Assets/Graphics/Tutorials/tuto_stations.png" id="2_8h6nf"]
 [ext_resource type="Texture2D" uid="uid://domshxx6wfh6l" path="res://Assets/Graphics/Tutorials/tuto_patience.png" id="3_rso3y"]
 [ext_resource type="Texture2D" uid="uid://b2ps3tsg7eh02" path="res://Assets/Graphics/Tutorials/tuto_ghost.png" id="4_n4ihd"]
 [ext_resource type="Texture2D" uid="uid://bwroaqc4c0t0" path="res://Assets/Graphics/Tutorials/tuto_winning.png" id="5_itvf6"]
 [ext_resource type="Script" uid="uid://des5nhjhmj7v1" path="res://Tutorial/tutorial.gd" id="6_8h6nf"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n4ihd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gotrj"]
 animations = [{
@@ -51,6 +54,18 @@ animations = [{
 }]
 
 [node name="Tutorial" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -34.0
+offset_top = -23.0
+offset_right = 1333.0
+offset_bottom = 755.0
+texture = SubResource("CanvasTexture_n4ihd")
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.7294118)
+position = Vector2(640, 360)
+texture = ExtResource("1_rso3y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(640, 360)
