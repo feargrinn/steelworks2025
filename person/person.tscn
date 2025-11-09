@@ -361,5 +361,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 text = "no $$"
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="input_event" from="MouseClickDetection" to="." method="_on_mouse_click_detection_input_event"]
 [connection signal="mouse_entered" from="MouseClickDetection" to="." method="_on_mouse_click_detection_mouse_entered"]
 [connection signal="mouse_exited" from="MouseClickDetection" to="." method="_on_mouse_click_detection_mouse_exited"]

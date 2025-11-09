@@ -13,7 +13,6 @@ class_name Person
 
 const material_hover: Material = preload("res://materials/person.tres")
 const material_select: Material = preload("res://materials/person_selected.tres")
-var highlighted: bool = false
 var is_playing: bool = false
 var current_machine: GameStation = null
 var current_material: Material = null
@@ -32,13 +31,7 @@ func _physics_process(delta: float) -> void:
 			AudioManager.play_sfx("too_tired")
 	else:
 		person_stats.irritation -= person_stats.calming_down_speed * delta
-	if Input.is_action_just_pressed("left_click") and highlighted:
-		GameManager.set_selected_person(self)
-	if Input.is_action_just_pressed("right_click") and highlighted:
-		for i in get_tree().get_nodes_in_group('person_pop_up'):
-			i.queue_free()
-		var stats_viewer := PersonStatsViewer.instantiate(person_stats)
-		add_child(stats_viewer)
+		
 	
 	var ghosts := get_tree().get_nodes_in_group("ghost")
 	ghosts.sort_custom(
@@ -80,14 +73,14 @@ func indicate_not_enough_coins() -> void:
 	tween.tween_callback(tween.kill)
 
 func _on_mouse_click_detection_mouse_entered() -> void:
-	if !GameManager.machine_highlighted:
-		GameManager.human_highlighted = true
-		highlighted = true
+	#if !GameManager.machine_highlighted:
+		#GameManager.human_highlighted = true
+		#highlighted = true
 		animated_sprite_2d.material = material_hover
 
 func _on_mouse_click_detection_mouse_exited() -> void:
-	GameManager.human_highlighted = false
-	highlighted = false
+	#GameManager.human_highlighted = false
+	#highlighted = false
 	animated_sprite_2d.material = current_material
 	
 func select():
@@ -111,3 +104,13 @@ func play_animation(anim: PersonAnim):
 			PersonAnim.RIGHT: animation_name = "right"
 			
 		animated_sprite_2d.play((animation_name + "%d") % id)
+
+
+func _on_mouse_click_detection_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event.is_action_pressed("left_click"):
+		GameManager.set_selected_person(self)
+	if event.is_action_pressed("right_click"):
+		for i in get_tree().get_nodes_in_group('person_pop_up'):
+			i.queue_free()
+		var stats_viewer := PersonStatsViewer.instantiate(person_stats)
+		add_child(stats_viewer)

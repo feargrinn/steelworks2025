@@ -24,7 +24,6 @@ signal game_lost(id: int)
 var tween: Tween
 var assigned_person: Person = null
 var player_person: Person = null
-var highlighted: bool = false
 var waiting_for_player: bool = false
 
 var outline_material: Material = preload("res://materials/person.tres")
@@ -39,30 +38,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	_update_progress_bar()
 	# Clicked on the station
-	if Input.is_action_just_pressed("left_click") and highlighted:
-		print("Clicked station with id: ", station_id)
-		
-		# If there is a person selected we make him go towards the station (he is assigned)
-		if GameManager.currently_selected_person != null and GameManager.currently_selected_person != player_person:
-			if assigned_person:
-				assigned_person.set_target_position(assigned_person.global_position) # former assigned stops
-				assigned_person = null
-			if player_person: 
-				player_person.set_target_position(go_away_position.global_position) # Former player goes away
-			
-			# new assigned goes towards station
-			waiting_for_player = true
-			assigned_person = GameManager.currently_selected_person
-			assigned_person.set_target_position(required_position.global_position)
-			print("Person ", assigned_person.id ," goes towards station with id: ", station_id)
-			GameManager.set_selected_person(null)
-	if Input.is_action_just_pressed("right_click") and highlighted:
-		for i in get_tree().get_nodes_in_group('stattion_pop_ups'):
-			i.queue_free()
-		add_child(StationStatsViewer.instantiate(station_stats))
-	#elif Input.is_action_just_pressed("left_click") and GameManager.currently_selected_person:
-		#GameManager.currently_selected_person.set_target_position(get_global_mouse_position())
-		#GameManager.set_selected_person(null)
 
 
 	# Checking if the person has finished walking to the station
@@ -150,12 +125,39 @@ func _update_progress_bar() -> void:
 	progress_bar.value = time_passed
 
 func _on_mouse_entered() -> void:
-	if !GameManager.human_highlighted:
-		GameManager.machine_highlighted = true
-		highlighted = true
+	#if !GameManager.human_highlighted:
+		#GameManager.machine_highlighted = true
+		#highlighted = true
 		animated_sprite_2d.material = outline_material
 	
 func _on_mouse_exited() -> void:
-	GameManager.machine_highlighted = false
-	highlighted = false
+	#GameManager.machine_highlighted = false
+	#highlighted = false
 	animated_sprite_2d.material = null
+
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event.is_action_pressed("left_click"):
+		print("Clicked station with id: ", station_id)
+		
+		# If there is a person selected we make him go towards the station (he is assigned)
+		if GameManager.currently_selected_person != null and GameManager.currently_selected_person != player_person:
+			if assigned_person:
+				assigned_person.set_target_position(assigned_person.global_position) # former assigned stops
+				assigned_person = null
+			if player_person: 
+				player_person.set_target_position(go_away_position.global_position) # Former player goes away
+			
+			# new assigned goes towards station
+			waiting_for_player = true
+			assigned_person = GameManager.currently_selected_person
+			assigned_person.set_target_position(required_position.global_position)
+			print("Person ", assigned_person.id ," goes towards station with id: ", station_id)
+			GameManager.set_selected_person(null)
+	if event.is_action_pressed("right_click"):
+		for i in get_tree().get_nodes_in_group('stattion_pop_ups'):
+			i.queue_free()
+		add_child(StationStatsViewer.instantiate(station_stats))
+	#elif Input.is_action_just_pressed("left_click") and GameManager.currently_selected_person:
+		#GameManager.currently_selected_person.set_target_position(get_global_mouse_position())
+		#GameManager.set_selected_person(null)
