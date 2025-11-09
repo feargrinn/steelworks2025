@@ -16,6 +16,8 @@ func _ready() -> void:
 		var file = FileAccess.open("user://save", FileAccess.WRITE)
 		file.store_string('0')
 		file.close()
+		var highscore_file = FileAccess.open("user://leaderboard", FileAccess.WRITE)
+		highscore_file.close()
 	pass # Replace with function body.
 
 func set_selected_person(person: Person):

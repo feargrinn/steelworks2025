@@ -7,11 +7,20 @@ var time_left : int
 func _ready() -> void:
 	#win
 	if win_condition:
-		if time_left > int(GameManager.high_score):
+		if time_left > 0: #int(GameManager.high_score):
 			print(time_left)
 			var save_access_file = FileAccess.open("user://save", FileAccess.WRITE) 
 			save_access_file.store_string(str(time_left))
 			save_access_file.flush()
+			
+			var inst_high_score_input = preload("res://UI/high_score_pop_up.tscn").instantiate()
+			inst_high_score_input.set_high_score(time_left)
+			add_child(inst_high_score_input)
+			
+			
+			var highscore_file = FileAccess.open("user://leaderboard", FileAccess.WRITE)
+			
+			highscore_file.close()
 
 		%Label.text = "You've won with the time " + formatted_time_left
 		pass
