@@ -1,19 +1,21 @@
 extends Node2D
 @onready var viewport_rect = get_viewport_rect()
+const SPAWN_FAR := 100
+
 var get_random_down_pos := func() -> Vector2: return Vector2(
 	viewport_rect.position.x + viewport_rect.size.x * randf_range(0, 1),
-	viewport_rect.end.y
+	viewport_rect.end.y + SPAWN_FAR
 )
 var get_random_top_pos := func() -> Vector2: return Vector2(
 	viewport_rect.position.x + viewport_rect.size.x * randf_range(0, 1),
-	viewport_rect.position.y
+	viewport_rect.position.y - SPAWN_FAR
 )
 var get_random_right_pos := func() -> Vector2: return Vector2(
-	viewport_rect.end.x, 
+	viewport_rect.end.x + SPAWN_FAR,
 	viewport_rect.position.y + viewport_rect.size.y * randf_range(0, 1)
 )
 var get_random_left_pos := func() -> Vector2: return Vector2(
-	viewport_rect.position.x,
+	viewport_rect.position.x - SPAWN_FAR,
 	viewport_rect.position.y + viewport_rect.size.y * randf_range(0, 1)
 )
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +23,7 @@ var steps_to_walking = 0
 func _ready() -> void:
 	var start_point
 	var end_point
-	$Timer.wait_time = randi_range(5,15)
+	#$Timer.wait_time = randi_range(5,15)
 	
 	if randi_range(0,1) == 0:
 		start_point = get_random_top_pos.call()
