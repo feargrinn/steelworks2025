@@ -55,6 +55,12 @@ size_flags_vertical = 7
 text = "PLAY"
 script = ExtResource("2_tk8dj")
 
+[node name="Leaderboard" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+text = "LEADERBOARD"
+script = ExtResource("2_tk8dj")
+
 [node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 7
@@ -74,6 +80,7 @@ text = "QUIT"
 script = ExtResource("2_tk8dj")
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Leaderboard" to="." method="_on_leaderboard_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
