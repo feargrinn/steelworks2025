@@ -14,7 +14,9 @@ func _ready() -> void:
 		var file = FileAccess.open("user://save", FileAccess.WRITE)
 		file.store_string('0')
 		file.close()
+	if FileAccess.file_exists("user://leaderboard") == false:
 		var highscore_file = FileAccess.open("user://leaderboard", FileAccess.WRITE)
+		highscore_file.store_string('')
 		highscore_file.close()
 	pass # Replace with function body.
 
