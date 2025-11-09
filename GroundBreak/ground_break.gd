@@ -48,7 +48,6 @@ func _ready() -> void:
 		$Line2D.add_point(i)
 	points.append(end_point)
 	$Line2D.add_point(end_point)
-	
 	if randi_range(0,1) == 0:
 		points.reverse()
 	print(points)
@@ -61,9 +60,15 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	for fakegost in get_tree().get_nodes_in_group('fake_ghost_support_club'):
+		var prev_fakegost_pos = fakegost.position.x
 		fakegost.progress += 100 * _delta
+		if fakegost.position.x < prev_fakegost_pos:
+			fakegost.get_node('CharacterBody2D/AnimatedSprite2D').flip_h = false
+		else:
+			fakegost.get_node('CharacterBody2D/AnimatedSprite2D').flip_h = true
 		if fakegost.progress_ratio == 1.0:
 			fakegost.queue_free()
+		
 	if len(get_tree().get_nodes_in_group('fake_ghost_support_club')) == 0 and $Timer.is_stopped():
 		queue_free()
 		

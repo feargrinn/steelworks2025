@@ -23,7 +23,7 @@ game_station_stats = Dictionary[int, ExtResource("2_2f6fh")]({
 })
 metadata/_custom_type_script = "uid://b34awb8mabkru"
 
-[node name="PersonStatsViewer" type="PanelContainer"]
+[node name="PersonStatsViewer" type="PanelContainer" groups=["person_pop_up"]]
 offset_right = 249.0
 offset_bottom = 136.0
 script = ExtResource("1_ju1rq")
