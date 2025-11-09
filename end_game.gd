@@ -1,4 +1,5 @@
 extends Control
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 
 var win_condition : bool
 var formatted_time_left : String
@@ -21,6 +22,7 @@ func _ready() -> void:
 			var highscore_file = FileAccess.open("user://leaderboard", FileAccess.WRITE)
 			
 			highscore_file.close()
+		cpu_particles_2d.emitting = true
 
 		%Label.text = "You've won with the time " + formatted_time_left
 		pass

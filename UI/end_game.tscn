@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh25ri3kk4lrl"]
+[gd_scene load_steps=6 format=3 uid="uid://dh25ri3kk4lrl"]
 
 [ext_resource type="Script" uid="uid://c5gqvpnjjmwaw" path="res://end_game.gd" id="1_u11pd"]
 [ext_resource type="Script" uid="uid://nhgqr5posukk" path="res://UI/button_click.gd" id="2_xqbdw"]
+
+[sub_resource type="Curve" id="Curve_xqbdw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5215827, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.67161965), -0.026850179, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_cl2su"]
+offsets = PackedFloat32Array(0, 0.24603175, 0.50396824, 0.71825397, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_lj7at"]
+offsets = PackedFloat32Array(0, 0.21031746, 0.46031746, 0.77380955, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0.29411766, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0.36078432, 1, 1, 1, 1, 1)
 
 [node name="EndGame" type="Control"]
 process_mode = 3
@@ -56,6 +68,33 @@ script = ExtResource("2_xqbdw")
 layout_mode = 2
 text = "GO BACK TO MAIN MENU"
 script = ExtResource("2_xqbdw")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+process_mode = 3
+z_index = 1000
+position = Vector2(646, 418)
+emitting = false
+amount = 256
+one_shot = true
+explosiveness = 0.6
+emission_shape = 3
+emission_rect_extents = Vector2(500, 300)
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 3000)
+initial_velocity_min = 800.0
+initial_velocity_max = 1200.0
+angular_velocity_min = 45.0
+angular_velocity_max = 135.0
+angle_min = -16.5
+angle_max = 297.6
+scale_amount_min = 30.0
+scale_amount_max = 50.0
+scale_amount_curve = SubResource("Curve_xqbdw")
+color_ramp = SubResource("Gradient_cl2su")
+color_initial_ramp = SubResource("Gradient_lj7at")
+hue_variation_min = -1.0
+hue_variation_max = 0.76
 
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/GoBack" to="." method="_on_go_back_pressed"]
