@@ -7,7 +7,7 @@ var time_left : int
 func _ready() -> void:
 	#win
 	if win_condition:
-		if time_left > 0: #int(GameManager.high_score):
+		if time_left > int(GameManager.high_score):
 			print(time_left)
 			var save_access_file = FileAccess.open("user://save", FileAccess.WRITE) 
 			save_access_file.store_string(str(time_left))
