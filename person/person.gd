@@ -32,8 +32,9 @@ func _physics_process(delta: float) -> void:
 			AudioManager.play_sfx("too_tired")
 	else:
 		person_stats.irritation -= person_stats.calming_down_speed * delta
-	if Input.is_action_just_pressed("right_click") and highlighted:
+	if Input.is_action_just_pressed("left_click") and highlighted:
 		GameManager.set_selected_person(self)
+	if Input.is_action_just_pressed("right_click") and highlighted:
 		for i in get_tree().get_nodes_in_group('person_pop_up'):
 			i.queue_free()
 		var stats_viewer := PersonStatsViewer.instantiate(person_stats)
@@ -81,17 +82,11 @@ func indicate_not_enough_coins() -> void:
 func _on_mouse_click_detection_mouse_entered() -> void:
 	highlighted = true
 	animated_sprite_2d.material = material_hover
-	if not popup:
-		popup = PersonStatsViewer.instantiate(person_stats)
-		add_child(popup)
 
 func _on_mouse_click_detection_mouse_exited() -> void:
 	highlighted = false
 	animated_sprite_2d.material = current_material
-	if popup:
-		popup.queue_free()
-		popup = null
-
+	
 func select():
 	current_material = material_select
 	if not animated_sprite_2d.material:
