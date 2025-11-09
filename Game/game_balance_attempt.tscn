@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://oq52jok2vof0"]
+[gd_scene load_steps=65 format=4 uid="uid://oq52jok2vof0"]
 
 [ext_resource type="PackedScene" uid="uid://bju83lqmpv8l0" path="res://GameStation/game_station.tscn" id="1_yvxyn"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_7u3s2"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://brp7qk3itnw6o" path="res://ghost/ghost_spawner.tscn" id="7_rrjkx"]
 [ext_resource type="PackedScene" uid="uid://byohe4r0kp34u" path="res://person/Characters/person_witch.tscn" id="7_vsr8i"]
 [ext_resource type="PackedScene" uid="uid://di0tyr2qohlsm" path="res://person/Characters/person_pumpkin.tscn" id="8_r5ukm"]
-[ext_resource type="Script" path="res://ghost/wave.gd" id="8_vsr8i"]
+[ext_resource type="Script" uid="uid://c1tyxopfhs18s" path="res://ghost/wave.gd" id="8_vsr8i"]
 [ext_resource type="PackedScene" uid="uid://b3w2blow7jusn" path="res://person/Characters/person_skeleton.tscn" id="9_32ex6"]
 [ext_resource type="PackedScene" uid="uid://b3rityvrj61vr" path="res://GroundBreak/ground_break_spawner.tscn" id="13_42mck"]
 
@@ -176,7 +176,7 @@ game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
 5: SubResource("Resource_rocpe"),
 6: SubResource("Resource_jks6o")
 })
-speed = 20.0
+speed = 50.0
 patience = 200
 calming_down_speed = 30
 metadata/_custom_type_script = "uid://b34awb8mabkru"
@@ -298,14 +298,54 @@ metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
 [sub_resource type="Resource" id="Resource_hcmxo"]
 script = ExtResource("8_vsr8i")
-time_before = 5.0
+time_before = 50.0
+enemy_count = 3
+time_interval = 1.0
 mode = 4
 metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 
 [sub_resource type="Resource" id="Resource_xmxo4"]
 script = ExtResource("8_vsr8i")
-time_before = 5.0
+time_before = 40.0
+enemy_count = 6
+time_interval = 0.5
 mode = 5
+metadata/_custom_type_script = "uid://c1tyxopfhs18s"
+
+[sub_resource type="Resource" id="Resource_1lbuq"]
+script = ExtResource("8_vsr8i")
+time_before = 20.0
+enemy_count = 5
+time_interval = 0.5
+mode = 2
+metadata/_custom_type_script = "uid://c1tyxopfhs18s"
+
+[sub_resource type="Resource" id="Resource_rhu84"]
+script = ExtResource("8_vsr8i")
+time_before = 5.0
+enemy_count = 5
+time_interval = 0.5
+mode = 3
+metadata/_custom_type_script = "uid://c1tyxopfhs18s"
+
+[sub_resource type="Resource" id="Resource_mkad3"]
+script = ExtResource("8_vsr8i")
+time_before = 30.0
+time_interval = 1.0
+metadata/_custom_type_script = "uid://c1tyxopfhs18s"
+
+[sub_resource type="Resource" id="Resource_bi5pv"]
+script = ExtResource("8_vsr8i")
+time_before = 40.0
+time_interval = 0.5
+mode = 5
+metadata/_custom_type_script = "uid://c1tyxopfhs18s"
+
+[sub_resource type="Resource" id="Resource_atcd5"]
+script = ExtResource("8_vsr8i")
+time_before = 20.0
+enemy_count = 15
+time_interval = 0.5
 metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 
 [node name="GameTest" type="Node2D"]
@@ -372,6 +412,6 @@ station_id = 6
 station_stats = SubResource("Resource_32ex6")
 
 [node name="GhostSpawner" parent="." instance=ExtResource("7_rrjkx")]
-waves = Array[ExtResource("8_vsr8i")]([SubResource("Resource_hcmxo"), SubResource("Resource_xmxo4")])
+waves = Array[ExtResource("8_vsr8i")]([SubResource("Resource_hcmxo"), SubResource("Resource_xmxo4"), SubResource("Resource_1lbuq"), SubResource("Resource_rhu84"), SubResource("Resource_mkad3"), SubResource("Resource_bi5pv"), SubResource("Resource_atcd5")])
 
 [node name="GroundBreak Spawner" parent="." instance=ExtResource("13_42mck")]
