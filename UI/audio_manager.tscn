@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cq4muywmqqod6"]
 
 [ext_resource type="Script" uid="uid://bqvenp6aygy3v" path="res://UI/audio_manager.gd" id="1_jisk1"]
-[ext_resource type="AudioStream" uid="uid://cxovcinx77k3m" path="res://Music/music_demo.ogg" id="2_rw5qr"]
+[ext_resource type="AudioStream" uid="uid://33uprc3rtlgr" path="res://Music/music.ogg" id="2_0fw3q"]
 [ext_resource type="AudioStream" uid="uid://brck5snhw3dpy" path="res://Music/click.ogg" id="3_0fw3q"]
 [ext_resource type="AudioStream" uid="uid://bre6sjbfsqv3" path="res://Music/ghost_death.ogg" id="3_2ovay"]
 [ext_resource type="AudioStream" uid="uid://dac14ylbbvpcl" path="res://Music/ticket_collected.ogg" id="4_6qboy"]
@@ -17,7 +17,7 @@ script = ExtResource("1_jisk1")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("2_rw5qr")
+stream = ExtResource("2_0fw3q")
 autoplay = true
 bus = &"Music"
 
@@ -33,7 +33,7 @@ bus = &"SFX"
 
 [node name="footstep" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_yfb3t")
-volume_db = 12.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="ghost_death" type="AudioStreamPlayer" parent="sfx"]
