@@ -4,9 +4,10 @@ extends Control
 var win_condition : bool
 var formatted_time_left : String
 var time_left : int
+var inst_high_score_input = preload("res://UI/high_score_pop_up.tscn").instantiate()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#win
+	win_condition = true
 	if win_condition:
 		if time_left > int(GameManager.high_score):
 			print(time_left)
@@ -14,17 +15,15 @@ func _ready() -> void:
 			save_access_file.store_string(str(time_left))
 			save_access_file.flush()
 			
-			var inst_high_score_input = preload("res://UI/high_score_pop_up.tscn").instantiate()
-			inst_high_score_input.set_high_score(time_left)
-			add_child(inst_high_score_input)
-			
-			
-			var highscore_file = FileAccess.open("user://leaderboard", FileAccess.WRITE)
-			
-			highscore_file.close()
+			inst_high_score_input.get_node('PanelContainer/MarginContainer/VBoxContainer/Label').text = 'NEW HIGH SCORE!'
+		else:
+			inst_high_score_input.get_node('PanelContainer/MarginContainer/VBoxContainer/Label').text = 'Your score:'
+		inst_high_score_input.set_high_score(time_left)
+		
 		cpu_particles_2d.emitting = true
-
-		%Label.text = "You've won with the time " + formatted_time_left
+		await cpu_particles_2d.finished
+		add_child(inst_high_score_input)
+		%Label.text = "You've won!" + formatted_time_left
 		pass
 	else:
 		%Label.text = "You loooooooooooooost"
@@ -40,6 +39,6 @@ func _on_play_again_pressed() -> void:
 
 func _on_go_back_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://UI/main_menu.tscn")
+	queue_free()
 	#print('shitbutmore')
 	pass # Replace with function body.
