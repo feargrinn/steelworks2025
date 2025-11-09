@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://oq52jok2vof0"]
+[gd_scene load_steps=105 format=4 uid="uid://oq52jok2vof0"]
 
 [ext_resource type="PackedScene" uid="uid://bju83lqmpv8l0" path="res://GameStation/game_station.tscn" id="1_yvxyn"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_7u3s2"]
@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://di0tyr2qohlsm" path="res://person/Characters/person_pumpkin.tscn" id="8_r5ukm"]
 [ext_resource type="Script" uid="uid://c1tyxopfhs18s" path="res://ghost/wave.gd" id="8_vsr8i"]
 [ext_resource type="PackedScene" uid="uid://b3w2blow7jusn" path="res://person/Characters/person_skeleton.tscn" id="9_32ex6"]
+[ext_resource type="Texture2D" uid="uid://dghgqdqkogs42" path="res://Assets/Graphics/Machines/machine_Go.png" id="11_32ex6"]
+[ext_resource type="Texture2D" uid="uid://dsufjocukntti" path="res://Assets/Graphics/Machines/ss_fesh.png" id="11_vsr8i"]
+[ext_resource type="Texture2D" uid="uid://h63cg05kg5mh" path="res://Assets/Graphics/Machines/machine_Bonez.png" id="12_r5ukm"]
+[ext_resource type="Texture2D" uid="uid://bpqkuwyo4uygw" path="res://Assets/Graphics/Machines/machine_Crown.png" id="12_w70x5"]
 [ext_resource type="PackedScene" uid="uid://b3rityvrj61vr" path="res://GroundBreak/ground_break_spawner.tscn" id="13_42mck"]
 
 [sub_resource type="Resource" id="Resource_7tgfk"]
@@ -302,6 +306,59 @@ max_tickets = 20
 available_tickets = 250
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba57m"]
+atlas = ExtResource("11_32ex6")
+region = Rect2(512, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hte8e"]
+atlas = ExtResource("11_32ex6")
+region = Rect2(256, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqalx"]
+atlas = ExtResource("11_32ex6")
+region = Rect2(384, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16lpa"]
+atlas = ExtResource("11_32ex6")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt7cu"]
+atlas = ExtResource("11_32ex6")
+region = Rect2(128, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03f5k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba57m")
+}],
+"loop": true,
+"name": &"ded",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hte8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqalx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16lpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt7cu")
+}],
+"loop": true,
+"name": &"playing",
+"speed": 2.0
+}]
+
 [sub_resource type="Resource" id="Resource_42mck"]
 resource_local_to_scene = true
 script = ExtResource("2_7u3s2")
@@ -312,6 +369,59 @@ min_tickets = 100
 max_tickets = 100
 available_tickets = 100
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhh4b"]
+atlas = ExtResource("12_w70x5")
+region = Rect2(512, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpegc"]
+atlas = ExtResource("12_w70x5")
+region = Rect2(256, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya3sl"]
+atlas = ExtResource("12_w70x5")
+region = Rect2(384, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn58k"]
+atlas = ExtResource("12_w70x5")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wcvg"]
+atlas = ExtResource("12_w70x5")
+region = Rect2(128, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7yj8r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhh4b")
+}],
+"loop": true,
+"name": &"ded",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpegc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya3sl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn58k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wcvg")
+}],
+"loop": true,
+"name": &"playing",
+"speed": 2.0
+}]
 
 [sub_resource type="Resource" id="Resource_rrjkx"]
 resource_local_to_scene = true
@@ -332,6 +442,59 @@ max_tickets = 10
 available_tickets = 200
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_adk7m"]
+atlas = ExtResource("11_vsr8i")
+region = Rect2(512, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5enti"]
+atlas = ExtResource("11_vsr8i")
+region = Rect2(256, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sfih"]
+atlas = ExtResource("11_vsr8i")
+region = Rect2(384, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18gmx"]
+atlas = ExtResource("11_vsr8i")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w8pu"]
+atlas = ExtResource("11_vsr8i")
+region = Rect2(128, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_32ex6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adk7m")
+}],
+"loop": true,
+"name": &"ded",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5enti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sfih")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18gmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w8pu")
+}],
+"loop": true,
+"name": &"playing",
+"speed": 2.0
+}]
+
 [sub_resource type="Resource" id="Resource_r5ukm"]
 resource_local_to_scene = true
 script = ExtResource("2_7u3s2")
@@ -340,6 +503,59 @@ base_win_chance = 0.6
 min_tickets = 5
 available_tickets = 100
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w70x5"]
+atlas = ExtResource("12_r5ukm")
+region = Rect2(512, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7don1"]
+atlas = ExtResource("12_r5ukm")
+region = Rect2(256, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s5l2"]
+atlas = ExtResource("12_r5ukm")
+region = Rect2(384, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe4vv"]
+atlas = ExtResource("12_r5ukm")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe5ej"]
+atlas = ExtResource("12_r5ukm")
+region = Rect2(128, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ba57m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w70x5")
+}],
+"loop": true,
+"name": &"ded",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7don1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s5l2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe4vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe5ej")
+}],
+"loop": true,
+"name": &"playing",
+"speed": 2.0
+}]
 
 [sub_resource type="Resource" id="Resource_32ex6"]
 resource_local_to_scene = true
@@ -459,40 +675,75 @@ position = Vector2(128, 128)
 station_id = 1
 station_stats = SubResource("Resource_ei0uk")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/GameStation1"]
+sprite_frames = SubResource("SpriteFrames_03f5k")
+animation = &"ded"
+autoplay = "default"
+
 [node name="GameStation2" parent="NavigationRegion2D" instance=ExtResource("1_yvxyn")]
 position = Vector2(128, 320)
 station_id = 2
 station_stats = SubResource("Resource_42mck")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/GameStation2"]
+sprite_frames = SubResource("SpriteFrames_7yj8r")
+animation = &"playing"
+autoplay = "default"
 
 [node name="GameStation3" parent="NavigationRegion2D" instance=ExtResource("1_yvxyn")]
 position = Vector2(128, 512)
 station_id = 3
 station_stats = SubResource("Resource_rrjkx")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/GameStation3"]
+sprite_frames = SubResource("SpriteFrames_7yj8r")
+autoplay = "default"
+
 [node name="GameStation4" parent="NavigationRegion2D" instance=ExtResource("1_yvxyn")]
 position = Vector2(960, 128)
 station_id = 4
 station_stats = SubResource("Resource_vsr8i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/GameStation4"]
+sprite_frames = SubResource("SpriteFrames_32ex6")
+autoplay = "default"
 
 [node name="GameStation5" parent="NavigationRegion2D" instance=ExtResource("1_yvxyn")]
 position = Vector2(960, 320)
 station_id = 5
 station_stats = SubResource("Resource_r5ukm")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/GameStation5"]
+sprite_frames = SubResource("SpriteFrames_ba57m")
+animation = &"playing"
+autoplay = "default"
+
 [node name="GameStation6" parent="NavigationRegion2D" instance=ExtResource("1_yvxyn")]
 position = Vector2(960, 512)
 station_id = 6
 station_stats = SubResource("Resource_32ex6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/GameStation6"]
+sprite_frames = SubResource("SpriteFrames_32ex6")
+autoplay = "default"
 
 [node name="GameStation" parent="NavigationRegion2D" instance=ExtResource("1_yvxyn")]
 position = Vector2(512, 192)
 station_id = 7
 station_stats = SubResource("Resource_g4pid")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/GameStation"]
+sprite_frames = SubResource("SpriteFrames_32ex6")
+autoplay = "default"
+
 [node name="GameStation7" parent="NavigationRegion2D" instance=ExtResource("1_yvxyn")]
 position = Vector2(512, 448)
 station_id = 8
 station_stats = SubResource("Resource_rcyao")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/GameStation7"]
+sprite_frames = SubResource("SpriteFrames_ba57m")
+autoplay = "default"
 
 [node name="GhostSpawner" parent="." instance=ExtResource("7_rrjkx")]
 waves = Array[ExtResource("8_vsr8i")]([SubResource("Resource_hcmxo"), SubResource("Resource_xmxo4"), SubResource("Resource_1lbuq"), SubResource("Resource_rhu84"), SubResource("Resource_mkad3"), SubResource("Resource_bi5pv"), SubResource("Resource_atcd5")])
