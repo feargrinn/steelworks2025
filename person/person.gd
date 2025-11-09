@@ -22,6 +22,7 @@ var current_material: Material = null
 func _ready() -> void:
 	person_stats.irritation_changed.connect(irritability_display.update_color)
 	irritability_display.update_color(0)
+	play_animation(PersonAnim.IDLE)
 
 func _physics_process(delta: float) -> void:
 	if is_playing:
@@ -41,19 +42,27 @@ func _physics_process(delta: float) -> void:
 	var persons = get_tree().get_nodes_in_group("person")
 	persons.erase(self)
 	persons.sort_custom(func(p1: Person, p2: Person): return position.distance_to(p1.position) < position.distance_to(p2.position))
-	if len(ghosts) > 0 and (position - ghosts[0].position).length() < scary_distance:
+	if ghosts.size() > 0 and (position - ghosts[0].position).length() < scary_distance:
 		var dir = ghosts[0].position.direction_to(position)
 		dir = dir if not dir.length() == 0 else Vector2.from_angle(randf_range(0, 2*PI))
 		velocity = dir * person_stats.speed
+		set_target_position(position)
 	elif not navigation_agent_2d.is_navigation_finished():
 		var dir := to_local(navigation_agent_2d.get_next_path_position()).normalized()
 		velocity = dir * person_stats.speed
-	elif position.distance_to(persons[0].position) < 50:
+	elif persons.size() > 0 and position.distance_to(persons[0].position) < 50:
 		var dir = persons[0].position.direction_to(position)
 		velocity = dir * person_stats.speed
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
+	
+	if velocity.length() == 0:
+		play_animation(PersonAnim.IDLE)
+	elif velocity.x < 0:
+		play_animation(PersonAnim.LEFT)
+	else:
+		play_animation(PersonAnim.RIGHT)
 
 
 func set_target_position(target_position: Vector2) -> void:
@@ -83,3 +92,16 @@ func deselect():
 	current_material = null
 	if animated_sprite_2d.material != material_hover:
 		animated_sprite_2d.material = null
+
+enum PersonAnim {IDLE, LEFT, RIGHT}
+var last_anim_set: int = Time.get_ticks_msec()
+func play_animation(anim: PersonAnim):
+	if Time.get_ticks_msec() - last_anim_set > 200:
+		last_anim_set = Time.get_ticks_msec()
+		var animation_name := "idle"
+		match(anim):
+			PersonAnim.LEFT: animation_name = "left"
+			PersonAnim.RIGHT: animation_name = "right"
+			
+		animated_sprite_2d.play((animation_name + "%d") % id)
+	

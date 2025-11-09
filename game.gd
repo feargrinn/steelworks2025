@@ -10,6 +10,11 @@ func _ready() -> void:
 	GameManager.no_collected_tickets = 0
 	timer.wait_time = GameManager.GAME_LENGTH
 	timer.start()
+	var navigation_arr := search_for_node(get_tree().root, NavigationRegion2D)
+	if navigation_arr.size() > 0:
+		var navigation := navigation_arr[0] as NavigationRegion2D
+		navigation.navigation_polygon.agent_radius = 30
+		navigation.bake_navigation_polygon()
 	
 	
 func _process(_delta: float) -> void:
@@ -53,3 +58,12 @@ func lose():
 
 func _on_timer_timeout() -> void:
 	lose()
+
+
+func search_for_node(node: Node, node_type: Object) -> Array:
+	var arr: Array
+	for n in node.get_children():
+		arr.append_array(search_for_node(n, node_type))
+		if is_instance_of(n, node_type):
+			arr.append(n)
+	return arr

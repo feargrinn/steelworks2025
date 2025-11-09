@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3w2blow7jusn"]
+[gd_scene load_steps=8 format=3 uid="uid://b3w2blow7jusn"]
 
 [ext_resource type="PackedScene" uid="uid://clq3fnptaamig" path="res://person/person.tscn" id="1_45i56"]
 [ext_resource type="Script" uid="uid://ccgonsjiqsq6x" path="res://person/person_machine_stats.gd" id="2_n4ec7"]
 [ext_resource type="Script" uid="uid://b34awb8mabkru" path="res://person/person_stats.gd" id="3_exl6t"]
-[ext_resource type="Texture2D" uid="uid://cjsgec1h75gip" path="res://Assets/Graphics/characters_front_clean.png" id="4_etl8p"]
 
 [sub_resource type="Resource" id="Resource_7tgfk"]
 script = ExtResource("2_n4ec7")
@@ -25,27 +24,8 @@ metadata/_custom_type_script = "uid://b34awb8mabkru"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1ll0"]
 size = Vector2(48, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ibbt0"]
-atlas = ExtResource("4_etl8p")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ay4nm"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ibbt0")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
 [node name="Person" instance=ExtResource("1_45i56")]
+id = 4
 person_stats = SubResource("Resource_td4ws")
 
 [node name="CollisionShape2D" parent="MouseClickDetection" index="0"]
@@ -53,7 +33,8 @@ position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_g1ll0")
 
 [node name="AnimatedSprite2D" parent="." index="3"]
-sprite_frames = SubResource("SpriteFrames_ay4nm")
+animation = &"idle0"
+autoplay = ""
 
 [node name="IrritabilityDisplay" parent="." index="4"]
 offset_top = -144.0

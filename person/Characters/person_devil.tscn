@@ -22,4 +22,5 @@ game_station_stats = Dictionary[int, ExtResource("2_jeiyw")]({
 metadata/_custom_type_script = "uid://b34awb8mabkru"
 
 [node name="Person" instance=ExtResource("1_sska6")]
+id = 1
 person_stats = SubResource("Resource_16tdb")
