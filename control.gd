@@ -10,7 +10,8 @@ func _ready() -> void:
 	for i in lb_array_p1:
 		if !i == '':
 			lb_array_p2.append(i.split(' '))
-	print(lb_array_p2)
+	lb_array_p2.sort()
+	
 	
 	for i in lb_array_p2:
 		var sep = HSeparator.new()
