@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 			AudioManager.play_sfx("too_tired")
 	else:
 		person_stats.irritation -= person_stats.calming_down_speed * delta
-	if Input.is_action_just_pressed("left_click") and highlighted:
+	if Input.is_action_just_pressed("right_click") and highlighted:
 		GameManager.set_selected_person(self)
 		for i in get_tree().get_nodes_in_group('person_pop_up'):
 			i.queue_free()
