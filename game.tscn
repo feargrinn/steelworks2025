@@ -1,11 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbbmenxoxt7dg"]
+[gd_scene load_steps=10 format=3 uid="uid://dbbmenxoxt7dg"]
 
 [ext_resource type="Script" uid="uid://dn50cuwnvn4l8" path="res://game.gd" id="1_1r4le"]
 [ext_resource type="PackedScene" uid="uid://bry2niy2c25vt" path="res://UI/gui_time.tscn" id="2_7raqb"]
 [ext_resource type="Texture2D" uid="uid://w4uno7e4k1gy" path="res://Assets/Graphics/floor.png" id="2_fc0e3"]
+[ext_resource type="Shader" uid="uid://cjhf57wirhfsl" path="res://materials/aberration.gdshader" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://oq52jok2vof0" path="res://Game/game_balance_attempt.tscn" id="3_feb5d"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_fc0e3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jktm"]
+shader = ExtResource("3_7jktm")
+shader_parameter/intensity = 1.5000000223518
+shader_parameter/threshold = 0.10000000149012
+
+[sub_resource type="Gradient" id="Gradient_7jktm"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ryrav"]
+gradient = SubResource("Gradient_7jktm")
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1r4le")
@@ -25,6 +36,15 @@ texture = ExtResource("2_fc0e3")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="GUI"]
+material = SubResource("ShaderMaterial_7jktm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ryrav")
 
 [node name="Gui" parent="GUI" instance=ExtResource("2_7raqb")]
 unique_name_in_owner = true
