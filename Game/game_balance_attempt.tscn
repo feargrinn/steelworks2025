@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://oq52jok2vof0"]
+[gd_scene load_steps=60 format=4 uid="uid://oq52jok2vof0"]
 
 [ext_resource type="PackedScene" uid="uid://bju83lqmpv8l0" path="res://GameStation/game_station.tscn" id="1_yvxyn"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_7u3s2"]
@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://brp7qk3itnw6o" path="res://ghost/ghost_spawner.tscn" id="7_rrjkx"]
 [ext_resource type="PackedScene" uid="uid://byohe4r0kp34u" path="res://person/Characters/person_witch.tscn" id="7_vsr8i"]
 [ext_resource type="PackedScene" uid="uid://di0tyr2qohlsm" path="res://person/Characters/person_pumpkin.tscn" id="8_r5ukm"]
-[ext_resource type="Script" uid="uid://c1tyxopfhs18s" path="res://ghost/wave.gd" id="8_vsr8i"]
+[ext_resource type="Script" path="res://ghost/wave.gd" id="8_vsr8i"]
 [ext_resource type="PackedScene" uid="uid://b3w2blow7jusn" path="res://person/Characters/person_skeleton.tscn" id="9_32ex6"]
+[ext_resource type="PackedScene" uid="uid://b3rityvrj61vr" path="res://GroundBreak/ground_break_spawner.tscn" id="13_42mck"]
 
 [sub_resource type="Resource" id="Resource_7tgfk"]
 script = ExtResource("4_35u0o")
@@ -372,3 +373,5 @@ station_stats = SubResource("Resource_32ex6")
 
 [node name="GhostSpawner" parent="." instance=ExtResource("7_rrjkx")]
 waves = Array[ExtResource("8_vsr8i")]([SubResource("Resource_hcmxo"), SubResource("Resource_xmxo4")])
+
+[node name="GroundBreak Spawner" parent="." instance=ExtResource("13_42mck")]
