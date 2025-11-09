@@ -7,7 +7,7 @@ var time_left : int
 var inst_high_score_input = preload("res://UI/high_score_pop_up.tscn").instantiate()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	win_condition = true
+	
 	if win_condition:
 		if time_left > int(GameManager.high_score):
 			print(time_left)
