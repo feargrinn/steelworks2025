@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bju83lqmpv8l0"]
+[gd_scene load_steps=11 format=3 uid="uid://bju83lqmpv8l0"]
 
 [ext_resource type="Script" uid="uid://or6jxiwn13ui" path="res://GameStation/game_station.gd" id="1_1rg1j"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_vp250"]
-[ext_resource type="Texture2D" uid="uid://dsufjocukntti" path="res://Assets/Graphics/Machines/ss_fesh.png" id="4_wdeg8"]
 [ext_resource type="Texture2D" uid="uid://dokrqbvwwj484" path="res://Assets/Graphics/tikit.png" id="5_wdeg8"]
 
 [sub_resource type="Resource" id="Resource_wdeg8"]
@@ -22,59 +21,6 @@ gradient = SubResource("Gradient_wdeg8")
 width = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_adk7m"]
-atlas = ExtResource("4_wdeg8")
-region = Rect2(512, 0, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5enti"]
-atlas = ExtResource("4_wdeg8")
-region = Rect2(256, 0, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7sfih"]
-atlas = ExtResource("4_wdeg8")
-region = Rect2(384, 0, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_18gmx"]
-atlas = ExtResource("4_wdeg8")
-region = Rect2(0, 0, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1w8pu"]
-atlas = ExtResource("4_wdeg8")
-region = Rect2(128, 0, 128, 192)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vp250"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_adk7m")
-}],
-"loop": true,
-"name": &"ded",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5enti")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7sfih")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_18gmx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1w8pu")
-}],
-"loop": true,
-"name": &"playing",
-"speed": 2.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7sfih"]
 size = Vector2(64, 64)
@@ -119,10 +65,6 @@ show_percentage = false
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 51)
 texture = SubResource("GradientTexture2D_adk7m")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_vp250")
-autoplay = "default"
 
 [node name="WonPrizeLabel" type="Label" parent="."]
 visible = false
