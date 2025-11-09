@@ -80,10 +80,13 @@ func indicate_not_enough_coins() -> void:
 	tween.tween_callback(tween.kill)
 
 func _on_mouse_click_detection_mouse_entered() -> void:
-	highlighted = true
-	animated_sprite_2d.material = material_hover
+	if !GameManager.machine_highlighted:
+		GameManager.human_highlighted = true
+		highlighted = true
+		animated_sprite_2d.material = material_hover
 
 func _on_mouse_click_detection_mouse_exited() -> void:
+	GameManager.human_highlighted = false
 	highlighted = false
 	animated_sprite_2d.material = current_material
 	

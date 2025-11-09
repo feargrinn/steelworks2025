@@ -148,9 +148,12 @@ func _update_progress_bar() -> void:
 	progress_bar.value = time_passed
 
 func _on_mouse_entered() -> void:
-	highlighted = true
-	animated_sprite_2d.material = outline_material
+	if !GameManager.human_highlighted:
+		GameManager.machine_highlighted = true
+		highlighted = true
+		animated_sprite_2d.material = outline_material
 	
 func _on_mouse_exited() -> void:
+	GameManager.machine_highlighted = false
 	highlighted = false
 	animated_sprite_2d.material = null

@@ -5,6 +5,8 @@ var time_left := 300.0
 var no_collected_tickets: int = 0
 var currently_selected_person: Person = null
 var high_score : int
+var human_highlighted : bool
+var machine_highlighted : bool
 
 var machines: Dictionary[int, StationStats]
 

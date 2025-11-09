@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://btcktqbaaoyxw"]
+[gd_scene load_steps=2 format=3 uid="uid://btcktqbaaoyxw"]
+
+[ext_resource type="Script" uid="uid://nhgqr5posukk" path="res://UI/button_click.gd" id="1_ng644"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -8,19 +10,94 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.3
+anchor_right = 0.7
 anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = 30.0
+offset_right = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 128
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "CREDITS:"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "retrograde
-pestie
-ZapZap
-Liero
-Grzybek5
-gnaw.
 "
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "pestie
+"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Zapzap
+"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Liero
+"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Grzybek5
+"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "gnaw.
+"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Quit" type="Button" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+script = ExtResource("1_ng644")
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer3/Quit" to="VBoxContainer/MarginContainer3/Quit" method="_on_pressed"]
