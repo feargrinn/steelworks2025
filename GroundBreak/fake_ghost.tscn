@@ -109,8 +109,10 @@ shape = SubResource("CircleShape2D_ngb5e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 modulate = Color(1, 1, 1, 0.41568628)
+self_modulate = Color(1, 0.49019608, 1, 1)
 sprite_frames = SubResource("SpriteFrames_2nyy4")
 autoplay = "default"
+frame_progress = 0.22425185
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 libraries = {
