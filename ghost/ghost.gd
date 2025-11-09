@@ -6,6 +6,7 @@ extends Area2D
 @onready var node_to_follow: Node2D = get_tree().get_nodes_in_group("person").pick_random()
 @onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var fade_animation: AnimationPlayer = $AnimationPlayer
+const material_hover := preload("res://materials/person.tres")
 var dead: bool = false
 
 func _physics_process(delta: float) -> void:
@@ -34,3 +35,10 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 func _dispose(): # Called from death animation
 	queue_free()
+
+func _on_mouse_entered() -> void:
+	sprite_animation.material = material_hover
+
+
+func _on_mouse_exited() -> void:
+	sprite_animation.material = null

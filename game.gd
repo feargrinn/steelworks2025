@@ -40,10 +40,10 @@ func win():
 	AudioManager.play_sfx("victory_jingiel")
 	AudioManager.set_sfx_playing("footstep", false)
 	var inst_end = game_end_node.instantiate()
-	var time_node = $%GuiTime.time_formatted
+	var time_node = $%Gui.time_formatted
 	inst_end.win_condition = 1
 	inst_end.formatted_time_left = time_node
-	inst_end.time_left = $%GuiTime/Timer.time_left
+	inst_end.time_left = $%Gui/Timer.time_left
 	$GUI.add_child(inst_end)
 	get_tree().paused = true
 		

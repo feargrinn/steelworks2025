@@ -15,6 +15,7 @@ const error_station_distance: float = 20.0
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var won_prize_label: Label = $WonPrizeLabel
 @onready var label_position: Vector2 = $WonPrizeLabel.position
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 signal won_prize(tickets: int)
 signal game_won(id: int)
@@ -91,6 +92,7 @@ func _process(_delta: float) -> void:
 func _kill_station() -> void: # Station becomes inactive
 	if player_person: player_person.set_target_position(go_away_position.global_position)
 	animated_sprite_2d.animation = "ded"
+	point_light_2d.visible = false
 	progress_bar.hide()
 	
 	
