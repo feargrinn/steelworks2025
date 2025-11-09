@@ -56,6 +56,8 @@ func _process(_delta: float) -> void:
 			print("Person ", assigned_person.id ," goes towards station with id: ", station_id)
 			GameManager.set_selected_person(null)
 		else:
+			for i in get_tree().get_nodes_in_group('stattion_pop_ups'):
+				i.queue_free()
 			add_child(StationStatsViewer.instantiate(station_stats))
 	#elif Input.is_action_just_pressed("left_click") and GameManager.currently_selected_person:
 		#GameManager.currently_selected_person.set_target_position(get_global_mouse_position())

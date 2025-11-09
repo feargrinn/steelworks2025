@@ -1,16 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8ymtc5uqe1xt"]
 
-[ext_resource type="Script" path="res://GameStation/station_stats_viewer.gd" id="1_ut2i6"]
+[ext_resource type="Script" uid="uid://cho3xe14u7wag" path="res://GameStation/station_stats_viewer.gd" id="1_ut2i6"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_tyg0u"]
 
 [sub_resource type="Resource" id="Resource_y3pko"]
 script = ExtResource("2_tyg0u")
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
-[node name="StationStatsViewer" type="PanelContainer"]
+[node name="StationStatsViewer" type="PanelContainer" groups=["stattion_pop_ups"]]
 z_index = 2
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -136.0
+offset_right = 249.0
+grow_vertical = 0
 script = ExtResource("1_ut2i6")
 stats = SubResource("Resource_y3pko")
 
