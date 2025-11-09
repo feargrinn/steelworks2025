@@ -17,6 +17,7 @@ var highlighted: bool = false
 var is_playing: bool = false
 var current_machine: GameStation = null
 var current_material: Material = null
+var popup: Node
 
 
 func _ready() -> void:
@@ -47,14 +48,14 @@ func _physics_process(delta: float) -> void:
 	if ghosts.size() > 0 and (position - ghosts[0].position).length() < scary_distance:
 		var dir = ghosts[0].position.direction_to(position)
 		dir = dir if not dir.length() == 0 else Vector2.from_angle(randf_range(0, 2*PI))
-		velocity = dir * person_stats.speed
+		velocity = lerp(velocity, dir * person_stats.speed, 0.1)
 		set_target_position(position)
 	elif not navigation_agent_2d.is_navigation_finished():
 		var dir := to_local(navigation_agent_2d.get_next_path_position()).normalized()
-		velocity = dir * person_stats.speed
+		velocity = lerp(velocity, dir * person_stats.speed, 0.1)
 	elif persons.size() > 0 and position.distance_to(persons[0].position) < 50:
 		var dir = persons[0].position.direction_to(position)
-		velocity = dir * person_stats.speed
+		velocity = lerp(velocity, dir * person_stats.speed, 0.1)
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
@@ -80,10 +81,16 @@ func indicate_not_enough_coins() -> void:
 func _on_mouse_click_detection_mouse_entered() -> void:
 	highlighted = true
 	animated_sprite_2d.material = material_hover
+	if not popup:
+		popup = PersonStatsViewer.instantiate(person_stats)
+		add_child(popup)
 
 func _on_mouse_click_detection_mouse_exited() -> void:
 	highlighted = false
 	animated_sprite_2d.material = current_material
+	if popup:
+		popup.queue_free()
+		popup = null
 
 func select():
 	current_material = material_select
@@ -106,4 +113,3 @@ func play_animation(anim: PersonAnim):
 			PersonAnim.RIGHT: animation_name = "right"
 			
 		animated_sprite_2d.play((animation_name + "%d") % id)
-	
