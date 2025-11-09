@@ -57,6 +57,9 @@ func _process(_delta: float) -> void:
 			GameManager.set_selected_person(null)
 		else:
 			add_child(StationStatsViewer.instantiate(station_stats))
+	elif Input.is_action_just_pressed("left_click") and GameManager.currently_selected_person:
+		GameManager.currently_selected_person.set_target_position(get_global_mouse_position())
+		GameManager.set_selected_person(null)
 
 
 	# Checking if the person has finished walking to the station

@@ -50,7 +50,6 @@ func _physics_process(delta: float) -> void:
 		velocity = dir * person_stats.speed
 	elif position.distance_to(persons[0].position) < 50:
 		var dir = persons[0].position.direction_to(position)
-		print(dir)
 		velocity = dir * person_stats.speed
 	else:
 		velocity = Vector2.ZERO
