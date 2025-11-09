@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbbmenxoxt7dg"]
+[gd_scene load_steps=5 format=3 uid="uid://dbbmenxoxt7dg"]
 
 [ext_resource type="Script" uid="uid://dn50cuwnvn4l8" path="res://game.gd" id="1_1r4le"]
 [ext_resource type="PackedScene" uid="uid://bry2niy2c25vt" path="res://UI/gui_time.tscn" id="2_7raqb"]
+[ext_resource type="Texture2D" uid="uid://w4uno7e4k1gy" path="res://Assets/Graphics/floor.png" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://oq52jok2vof0" path="res://Game/game_balance_attempt.tscn" id="3_feb5d"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1r4le")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_fc0e3")
 
 [node name="Timer" type="Timer" parent="."]
 
