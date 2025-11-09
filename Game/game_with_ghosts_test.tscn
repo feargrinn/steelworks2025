@@ -80,7 +80,7 @@ metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 [node name="GameTest" type="Node2D"]
 
 [node name="GameStation" parent="." instance=ExtResource("1_5ecm4")]
-position = Vector2(240, 88)
+position = Vector2(232, 422)
 station_id = 1
 station_stats = SubResource("Resource_5xm6i")
 
