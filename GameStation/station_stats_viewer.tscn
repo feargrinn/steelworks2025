@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8ymtc5uqe1xt"]
 
-[ext_resource type="Script" uid="uid://cho3xe14u7wag" path="res://GameStation/station_stats_viewer.gd" id="1_ut2i6"]
+[ext_resource type="Script" path="res://GameStation/station_stats_viewer.gd" id="1_ut2i6"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_tyg0u"]
 
 [sub_resource type="Resource" id="Resource_y3pko"]
