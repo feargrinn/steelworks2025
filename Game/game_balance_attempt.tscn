@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://oq52jok2vof0"]
+[gd_scene load_steps=77 format=4 uid="uid://oq52jok2vof0"]
 
 [ext_resource type="PackedScene" uid="uid://bju83lqmpv8l0" path="res://GameStation/game_station.tscn" id="1_yvxyn"]
 [ext_resource type="Script" uid="uid://cdh1oja6p1an4" path="res://GameStation/station_stats.gd" id="2_7u3s2"]
@@ -41,6 +41,14 @@ metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 script = ExtResource("4_35u0o")
 metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 
+[sub_resource type="Resource" id="Resource_6j4ud"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_ufl5v"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
 [sub_resource type="Resource" id="Resource_w70x5"]
 resource_local_to_scene = true
 script = ExtResource("5_ei0uk")
@@ -50,11 +58,12 @@ game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
 3: SubResource("Resource_ya3sl"),
 4: SubResource("Resource_rn58k"),
 5: SubResource("Resource_1wcvg"),
-6: SubResource("Resource_7yj8r")
+6: SubResource("Resource_7yj8r"),
+7: SubResource("Resource_6j4ud"),
+8: SubResource("Resource_ufl5v")
 })
 speed = 300.0
 patience = 150
-calming_down_speed = 5
 metadata/_custom_type_script = "uid://b34awb8mabkru"
 
 [sub_resource type="Resource" id="Resource_7don1"]
@@ -84,6 +93,14 @@ metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 script = ExtResource("4_35u0o")
 metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 
+[sub_resource type="Resource" id="Resource_e0kkq"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_06m54"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
 [sub_resource type="Resource" id="Resource_xe4vv"]
 resource_local_to_scene = true
 script = ExtResource("5_ei0uk")
@@ -93,7 +110,9 @@ game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
 3: SubResource("Resource_wwivu"),
 4: SubResource("Resource_6bx2m"),
 5: SubResource("Resource_kf6w5"),
-6: SubResource("Resource_cjooy")
+6: SubResource("Resource_cjooy"),
+7: SubResource("Resource_e0kkq"),
+8: SubResource("Resource_06m54")
 })
 speed = 200.0
 patience = 200
@@ -126,6 +145,14 @@ metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 script = ExtResource("4_35u0o")
 metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 
+[sub_resource type="Resource" id="Resource_3hxxk"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_tycf3"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
 [sub_resource type="Resource" id="Resource_hte8e"]
 resource_local_to_scene = true
 script = ExtResource("5_ei0uk")
@@ -135,10 +162,13 @@ game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
 3: SubResource("Resource_fc4ds"),
 4: SubResource("Resource_pid3c"),
 5: SubResource("Resource_g476l"),
-6: SubResource("Resource_hl6eo")
+6: SubResource("Resource_hl6eo"),
+7: SubResource("Resource_3hxxk"),
+8: SubResource("Resource_tycf3")
 })
 speed = 200.0
-patience = 50
+patience = 80
+calming_down_speed = 30
 metadata/_custom_type_script = "uid://b34awb8mabkru"
 
 [sub_resource type="Resource" id="Resource_tqalx"]
@@ -165,6 +195,14 @@ metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 script = ExtResource("4_35u0o")
 metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 
+[sub_resource type="Resource" id="Resource_y4cr3"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_s7mjn"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
 [sub_resource type="Resource" id="Resource_jt7cu"]
 resource_local_to_scene = true
 script = ExtResource("5_ei0uk")
@@ -174,7 +212,9 @@ game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
 3: SubResource("Resource_l25uc"),
 4: SubResource("Resource_sdi2p"),
 5: SubResource("Resource_rocpe"),
-6: SubResource("Resource_jks6o")
+6: SubResource("Resource_jks6o"),
+7: SubResource("Resource_y4cr3"),
+8: SubResource("Resource_s7mjn")
 })
 speed = 50.0
 patience = 200
@@ -208,6 +248,17 @@ metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 script = ExtResource("4_35u0o")
 metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
 
+[sub_resource type="Resource" id="Resource_ywmnq"]
+script = ExtResource("4_35u0o")
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
+[sub_resource type="Resource" id="Resource_wyqvy"]
+script = ExtResource("4_35u0o")
+win_chance = 1.0
+irritation_on_loss = 25
+satisfaction_on_win = 100
+metadata/_custom_type_script = "uid://ccgonsjiqsq6x"
+
 [sub_resource type="Resource" id="Resource_wpegc"]
 resource_local_to_scene = true
 script = ExtResource("5_ei0uk")
@@ -217,15 +268,18 @@ game_station_stats = Dictionary[int, ExtResource("4_35u0o")]({
 3: SubResource("Resource_dumbk"),
 4: SubResource("Resource_rv08l"),
 5: SubResource("Resource_22ijh"),
-6: SubResource("Resource_mwixo")
+6: SubResource("Resource_mwixo"),
+7: SubResource("Resource_ywmnq"),
+8: SubResource("Resource_wyqvy")
 })
 speed = 400.0
-calming_down_speed = 2
+patience = 200
+calming_down_speed = 4
 metadata/_custom_type_script = "uid://b34awb8mabkru"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_stteb"]
-vertices = PackedVector2Array(1017, 601, 1255, 695, 25, 695, 903, 601, 185, 601, 903, 487, 71, 601, 25, 25, 71, 487, 1017, 409, 1255, 25, 1017, 487, 1017, 295, 1017, 217, 1017, 103, 903, 103, 903, 295, 903, 217, 903, 409, 185, 409, 185, 295, 185, 217, 71, 295, 71, 217, 185, 487, 185, 103, 71, 103, 71, 409)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 4, 2), PackedInt32Array(6, 2, 7, 8), PackedInt32Array(9, 10, 1, 11), PackedInt32Array(10, 9, 12), PackedInt32Array(13, 10, 12), PackedInt32Array(10, 13, 14), PackedInt32Array(7, 10, 14, 15), PackedInt32Array(13, 12, 16, 17), PackedInt32Array(16, 18, 19, 20), PackedInt32Array(17, 16, 20, 21), PackedInt32Array(21, 20, 22, 23), PackedInt32Array(5, 4, 24), PackedInt32Array(15, 17, 21, 25), PackedInt32Array(7, 15, 25), PackedInt32Array(7, 25, 26), PackedInt32Array(1, 0, 11), PackedInt32Array(18, 9, 11, 5), PackedInt32Array(19, 18, 5, 24), PackedInt32Array(27, 19, 24, 8), PackedInt32Array(27, 8, 7), PackedInt32Array(22, 27, 7), PackedInt32Array(23, 22, 7), PackedInt32Array(23, 7, 26)])
+vertices = PackedVector2Array(1017, 217, 1017, 295, 903, 295, 569, 281, 903, 217, 1017, 601, 1255, 695, 25, 695, 903, 601, 569, 537, 185, 601, 455, 537, 71, 601, 25, 89, 71, 487, 1017, 409, 1255, 89, 1017, 487, 1017, 103, 903, 103, 185, 217, 185, 103, 455, 167, 455, 281, 569, 423, 903, 487, 185, 487, 455, 423, 569, 167, 903, 409, 185, 409, 185, 295, 71, 217, 71, 295, 71, 409, 71, 103)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 8, 7, 10, 11), PackedInt32Array(12, 10, 7), PackedInt32Array(12, 7, 13, 14), PackedInt32Array(15, 16, 6, 17), PackedInt32Array(16, 15, 1), PackedInt32Array(0, 16, 1), PackedInt32Array(16, 0, 18), PackedInt32Array(13, 16, 18, 19), PackedInt32Array(20, 21, 22, 23), PackedInt32Array(9, 24, 25, 8), PackedInt32Array(11, 10, 26, 27), PackedInt32Array(4, 3, 28, 19), PackedInt32Array(23, 3, 2, 29, 24, 27, 30, 31), PackedInt32Array(32, 20, 23, 31, 33), PackedInt32Array(6, 5, 17), PackedInt32Array(29, 15, 17, 25, 24), PackedInt32Array(34, 30, 27, 26, 14), PackedInt32Array(34, 14, 13), PackedInt32Array(33, 34, 13), PackedInt32Array(32, 33, 13), PackedInt32Array(35, 32, 13), PackedInt32Array(21, 35, 13), PackedInt32Array(21, 13, 19), PackedInt32Array(21, 19, 28, 22)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-64, -64, -64, 768, 1344, 768, 1344, -64)])
 agent_radius = 25.0
 
@@ -243,7 +297,7 @@ sources/0 = SubResource("TileSetAtlasSource_us0j2")
 resource_local_to_scene = true
 script = ExtResource("2_7u3s2")
 max_game_length = 3.0
-base_win_chance = 0.75
+base_win_chance = 0.8
 max_tickets = 20
 available_tickets = 250
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
@@ -254,7 +308,7 @@ script = ExtResource("2_7u3s2")
 min_game_length = 1.0
 max_game_length = 5.0
 base_win_chance = 0.2
-min_tickets = 50
+min_tickets = 100
 max_tickets = 100
 available_tickets = 100
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
@@ -281,7 +335,8 @@ metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 [sub_resource type="Resource" id="Resource_r5ukm"]
 resource_local_to_scene = true
 script = ExtResource("2_7u3s2")
-max_game_length = 2.0
+max_game_length = 1.0
+base_win_chance = 0.6
 min_tickets = 5
 available_tickets = 100
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
@@ -296,9 +351,28 @@ max_tickets = 20
 available_tickets = 250
 metadata/_custom_type_script = "uid://cdh1oja6p1an4"
 
+[sub_resource type="Resource" id="Resource_g4pid"]
+resource_local_to_scene = true
+script = ExtResource("2_7u3s2")
+max_game_length = 3.0
+min_tickets = 3
+max_tickets = 15
+available_tickets = 150
+metadata/_custom_type_script = "uid://cdh1oja6p1an4"
+
+[sub_resource type="Resource" id="Resource_rcyao"]
+resource_local_to_scene = true
+script = ExtResource("2_7u3s2")
+max_game_length = 2.0
+base_win_chance = 0.9
+min_tickets = 2
+max_tickets = 4
+available_tickets = 100
+metadata/_custom_type_script = "uid://cdh1oja6p1an4"
+
 [sub_resource type="Resource" id="Resource_hcmxo"]
 script = ExtResource("8_vsr8i")
-time_before = 30.0
+time_before = 40.0
 enemy_count = 3
 time_interval = 1.0
 mode = 4
@@ -306,7 +380,7 @@ metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 
 [sub_resource type="Resource" id="Resource_xmxo4"]
 script = ExtResource("8_vsr8i")
-time_before = 40.0
+time_before = 30.0
 enemy_count = 6
 time_interval = 0.5
 mode = 5
@@ -322,7 +396,7 @@ metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 
 [sub_resource type="Resource" id="Resource_rhu84"]
 script = ExtResource("8_vsr8i")
-time_before = 30.0
+time_before = 5.0
 enemy_count = 5
 time_interval = 0.5
 mode = 3
@@ -330,14 +404,14 @@ metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 
 [sub_resource type="Resource" id="Resource_mkad3"]
 script = ExtResource("8_vsr8i")
-time_before = 30.0
+time_before = 40.0
 enemy_count = 8
 time_interval = 1.0
 metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 
 [sub_resource type="Resource" id="Resource_bi5pv"]
 script = ExtResource("8_vsr8i")
-time_before = 40.0
+time_before = 30.0
 enemy_count = 8
 time_interval = 0.5
 mode = 5
@@ -345,34 +419,32 @@ metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 
 [sub_resource type="Resource" id="Resource_atcd5"]
 script = ExtResource("8_vsr8i")
-time_before = 40.0
+time_before = 20.0
 enemy_count = 8
 metadata/_custom_type_script = "uid://c1tyxopfhs18s"
 
 [node name="GameTest" type="Node2D"]
 
-[node name="Stations" type="Node" parent="."]
-
 [node name="People" type="Node" parent="."]
 
 [node name="Person1" parent="People" instance=ExtResource("3_ei0uk")]
-position = Vector2(512, 512)
+position = Vector2(320, 576)
 person_stats = SubResource("Resource_w70x5")
 
 [node name="Person2" parent="People" instance=ExtResource("6_rrjkx")]
-position = Vector2(640, 512)
+position = Vector2(768, 576)
 person_stats = SubResource("Resource_xe4vv")
 
 [node name="Person3" parent="People" instance=ExtResource("7_vsr8i")]
-position = Vector2(448, 320)
+position = Vector2(256, 320)
 person_stats = SubResource("Resource_hte8e")
 
 [node name="Person4" parent="People" instance=ExtResource("8_r5ukm")]
-position = Vector2(576, 320)
+position = Vector2(704, 256)
 person_stats = SubResource("Resource_jt7cu")
 
 [node name="Person5" parent="People" instance=ExtResource("9_32ex6")]
-position = Vector2(704, 320)
+position = Vector2(832, 384)
 person_stats = SubResource("Resource_wpegc")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -411,6 +483,16 @@ station_stats = SubResource("Resource_r5ukm")
 position = Vector2(960, 512)
 station_id = 6
 station_stats = SubResource("Resource_32ex6")
+
+[node name="GameStation" parent="NavigationRegion2D" instance=ExtResource("1_yvxyn")]
+position = Vector2(512, 192)
+station_id = 7
+station_stats = SubResource("Resource_g4pid")
+
+[node name="GameStation7" parent="NavigationRegion2D" instance=ExtResource("1_yvxyn")]
+position = Vector2(512, 448)
+station_id = 8
+station_stats = SubResource("Resource_rcyao")
 
 [node name="GhostSpawner" parent="." instance=ExtResource("7_rrjkx")]
 waves = Array[ExtResource("8_vsr8i")]([SubResource("Resource_hcmxo"), SubResource("Resource_xmxo4"), SubResource("Resource_1lbuq"), SubResource("Resource_rhu84"), SubResource("Resource_mkad3"), SubResource("Resource_bi5pv"), SubResource("Resource_atcd5")])

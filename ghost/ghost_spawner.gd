@@ -65,14 +65,15 @@ func create_wave(enemy_count: int, time_between: float, mode: SpawnMode):
 
 
 func _on_timer_timeout() -> void:
-	if current_wave_idx >= no_waves:
-		current_wave_idx = no_waves - 1
-
 	create_wave(
 		waves[current_wave_idx].enemy_count, 
 		waves[current_wave_idx].time_interval, 
 		waves[current_wave_idx].mode
 	)
+	
 	current_wave_idx += 1
-	timer.wait_time = waves[current_wave_idx].time_before if current_wave_idx > waves.size() else 10.0
+	if current_wave_idx >= no_waves:
+		current_wave_idx = no_waves - 1
+	
+	timer.wait_time = waves[current_wave_idx].time_before
 	timer.start()
