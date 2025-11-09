@@ -32,6 +32,8 @@ func _ready() -> void:
 	timer.timeout.connect(end_round)
 	progress_bar.max_value = station_stats.max_game_length
 	station_stats.tickets_used_up.connect(_kill_station)
+	if !GameManager.machines.has(station_id):
+		GameManager.machines[station_id] = station_stats
 
 func _process(_delta: float) -> void:
 	_update_progress_bar()

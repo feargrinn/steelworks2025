@@ -16,7 +16,11 @@ static func instantiate(id: int, person_machine_stats: PersonMachineStats) -> Pe
 	return scene
 
 func _ready() -> void:
-	win_chance.text = str(stats.win_chance)
+	if GameManager.machines.has(machine_id):
+		var station_win_chance := GameManager.machines[machine_id].calculate_profitability()
+		win_chance.text = str(stats.win_chance * station_win_chance)
+	else:
+		win_chance.text = str(stats.win_chance)
 	irritation.text = (
 			str(stats.irritation_on_loss) + " or " + 
 			str(stats.satisfaction_on_win))

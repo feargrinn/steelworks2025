@@ -6,6 +6,8 @@ var no_collected_tickets: int = 0
 var currently_selected_person: Person = null
 var high_score : int
 
+var machines: Dictionary[int, StationStats]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if FileAccess.file_exists("user://save") == false:
